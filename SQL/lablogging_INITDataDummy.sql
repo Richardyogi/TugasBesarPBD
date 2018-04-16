@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2018 at 08:49 AM
+-- Generation Time: Apr 16, 2018 at 11:24 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -19,6 +19,56 @@ SET time_zone = "+00:00";
 --
 -- Database: `lablogging`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `agr_aktivitas_user`
+--
+
+CREATE TABLE `agr_aktivitas_user` (
+  `id_user` int(11) NOT NULL,
+  `id_aplikasi` int(11) NOT NULL,
+  `id_komputer` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `waktu_mulai` time NOT NULL,
+  `waktu_akhir` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `agr_jumlah_pengguna_per_jam`
+--
+
+CREATE TABLE `agr_jumlah_pengguna_per_jam` (
+  `tanggal` date NOT NULL,
+  `jam` time NOT NULL,
+  `jumlah_pengguna` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `agr_penggunaan_aplikasi`
+--
+
+CREATE TABLE `agr_penggunaan_aplikasi` (
+  `id_aplikasi` int(11) NOT NULL,
+  `jumlah_pengguna` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `agr_penggunaan_komputer`
+--
+
+CREATE TABLE `agr_penggunaan_komputer` (
+  `id_komputer` int(11) NOT NULL,
+  `jumlah_penggunaan` int(11) NOT NULL,
+  `durasi(jam)` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -486,6 +536,16 @@ INSERT INTO `aplikasi` (`id_aplikasi`, `Nama_Aplikasi`) VALUES
 (448, 'Autodesk Photos'),
 (449, 'Flash Photos'),
 (450, 'Google Photos');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `index_round_robin`
+--
+
+CREATE TABLE `index_round_robin` (
+  `no_index` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
 
