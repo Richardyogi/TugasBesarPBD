@@ -1,0 +1,20 @@
+body{
+    background-image: url("../asset/background.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat, repeat;
+    background-color: #cccccc00; 
+}
+#welcome{
+    padding: 10px;
+    letter-spacing: 5px;
+    font-size: 40px;
+    background-color: white;
+    
+}
+
+#inputPage{
+    background-color: white;
+    margin: 1%;
+    margin-top: 2.35% ;
+    padding: 5%;
+}
