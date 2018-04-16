@@ -1,0 +1,10 @@
+.headerClass{
+    background-color: black;
+    margin-left: 100%;
+    margin-right: 100%;
+}
+.headerClass.h1{
+    color: #F08519;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
