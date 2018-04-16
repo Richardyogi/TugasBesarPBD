@@ -22,8 +22,8 @@
 
 <body>
     <nav class="navbar navbar-expand-sm bg-dark  navbar-dark">
-        <a class="navbar-brand font-weight-heavy" href="#" style="color: #F08519;font-family: Calibri">Labkom
-            <a style="color: white;margin-left: -1.1%;margin-right: 1%">Logs</a>
+        <a class="navbar-brand font-weight-heavy" href="index.html" style="color: #F08519;font-family: Calibri">Labkom
+            <a class="navbar-brand" href="index.html" style="color: white;margin-left: -1.1%;margin-right: 1%;font-family: Calibri">Logs</a>
         </a>
 
         <ul class="navbar-nav">
@@ -47,12 +47,28 @@
             </li>
         </ul>
     </nav>
-    <div>
-        <center>
-            <p style="margin-top: 22.5%">
-                <span class="font-weight-light" id="welcome">SELAMAT DATANG</span>
-            </p>
-        </center>
+
+
+
+    <div id="inputPage">
+        <h2>Input Database</h2>
+        <form action="/action_page.php">
+            <div class="form-group">
+                <label for="user">Nama Pengguna :</label>
+                <input type="form" class="form-control" placeholder="Masukan nama Pengguna" name="user">
+            </div>
+            <button type="submit" class="btn btn-primary">Input</button>
+            <div class="form-group">
+                <label for="computer">Nama Komputer :</label>
+                <input type="form" class="form-control" placeholder="Masukan nama Komputer" name="computer">
+            </div>
+            <button type="submit" class="btn btn-primary">Input</button>
+            <div class="form-group">
+                    <label for="app">Nama Aplikasi :</label>
+                    <input type="form" class="form-control" placeholder="Masukan nama Aplikasi" name="app">
+                </div>
+                <button type="submit" class="btn btn-primary">Input</button>
+        </form>
     </div>
 
 </body>
