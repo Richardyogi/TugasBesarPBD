@@ -28,10 +28,10 @@
 
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link " href="input.html">Input data</a>
+                <a class="nav-link " href="#">Input data</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="Rrobin.html">Round Robin</a>
+                <a class="nav-link " href="#">Round Robin</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -47,12 +47,33 @@
             </li>
         </ul>
     </nav>
-    <div>
-        <center>
-            <p style="margin-top: 22.5%">
-                <span class="font-weight-light" id="welcome">SELAMAT DATANG</span>
-            </p>
-        </center>
+
+
+
+    <div id="contentPage">
+        <h2>Round Robin Table</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nama Pengguna</th>
+                    <th>Komputer</th>
+                    <th>Aplikasi</th>
+                    <th>Waktu Mulai</th>
+                    <th>Waktu Berhenti</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                   <!-- isi tabel -->
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                </tr> 
+               
+            </tbody>
+        </table>
     </div>
 
 </body>

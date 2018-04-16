@@ -50,7 +50,7 @@
 
 
 
-    <div id="inputPage">
+    <div id="contentPage">
         <h2>Input Database</h2>
         <form action="/action_page.php">
             <div class="form-group">
