@@ -28,21 +28,21 @@
 
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link " href="#">Input data</a>
+                <a class="nav-link " href="input.html">Input data</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="#">Round Robin</a>
+                <a class="nav-link " href="rRobin.html">Round Robin</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                     Laporan Lainnya
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Catatan Jam Sibuk</a>
-                    <a class="dropdown-item" href="#">Penggunaan Komputer</a>
-                    <a class="dropdown-item" href="#">Waktu Penggunaan Komputer</a>
-                    <a class="dropdown-item" href="#">Penggunaan Aplikasi</a>
-                    <a class="dropdown-item" href="#">Laporan Pengguna</a>
+                    <a class="dropdown-item" href="jamSibuk.html">Catatan Jam Sibuk</a>
+                    <a class="dropdown-item" href="pengKom.html">Penggunaan Komputer</a>
+                    <a class="dropdown-item" href="waktuPeng.html">Waktu Penggunaan Komputer</a>
+                    <a class="dropdown-item" href="pengApp.html">Penggunaan Aplikasi</a>
+                    <a class="dropdown-item" href="lprnPeng.html">Laporan Pengguna</a>
                 </div>
             </li>
         </ul>
@@ -64,10 +64,10 @@
             </div>
             <button type="submit" class="btn btn-primary">Input</button>
             <div class="form-group">
-                    <label for="app">Nama Aplikasi :</label>
-                    <input type="form" class="form-control" placeholder="Masukan nama Aplikasi" name="app">
-                </div>
-                <button type="submit" class="btn btn-primary">Input</button>
+                <label for="app">Nama Aplikasi :</label>
+                <input type="form" class="form-control" placeholder="Masukan nama Aplikasi" name="app">
+            </div>
+            <button type="submit" class="btn btn-primary">Input</button>
         </form>
     </div>
 

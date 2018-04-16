@@ -31,7 +31,7 @@
                 <a class="nav-link " href="input.html">Input data</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="Rrobin.html">Round Robin</a>
+                <a class="nav-link " href="rRobin.html">Round Robin</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -47,12 +47,29 @@
             </li>
         </ul>
     </nav>
-    <div>
-        <center>
-            <p style="margin-top: 22.5%">
-                <span class="font-weight-light" id="welcome">SELAMAT DATANG</span>
-            </p>
-        </center>
+
+
+
+    <div id="contentPage">
+        <h2>Durasi Penggunaan</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Durasi</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!-- isi tabel -->
+                    <td></td>
+                    <td></td>
+
+                </tr>
+
+            </tbody>
+        </table>
     </div>
 
 </body>

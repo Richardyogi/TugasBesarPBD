@@ -31,28 +31,52 @@
                 <a class="nav-link " href="input.html">Input data</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="Rrobin.html">Round Robin</a>
+                <a class="nav-link " href="rRobin.html">Round Robin</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                     Laporan Lainnya
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="jamSibuk.html">Catatan Jam Sibuk</a>
-                    <a class="dropdown-item" href="pengKom.html">Penggunaan Komputer</a>
-                    <a class="dropdown-item" href="waktuPeng.html">Waktu Penggunaan Komputer</a>
-                    <a class="dropdown-item" href="pengApp.html">Penggunaan Aplikasi</a>
-                    <a class="dropdown-item" href="lprnPeng.html">Laporan Pengguna</a>
-                </div>
+                        <a class="dropdown-item" href="jamSibuk.html">Catatan Jam Sibuk</a>
+                        <a class="dropdown-item" href="pengKom.html">Penggunaan Komputer</a>
+                        <a class="dropdown-item" href="waktuPeng.html">Waktu Penggunaan Komputer</a>
+                        <a class="dropdown-item" href="pengApp.html">Penggunaan Aplikasi</a>
+                        <a class="dropdown-item" href="lprnPeng.html">Laporan Pengguna</a>
+                    </div>
             </li>
         </ul>
     </nav>
-    <div>
-        <center>
-            <p style="margin-top: 22.5%">
-                <span class="font-weight-light" id="welcome">SELAMAT DATANG</span>
-            </p>
-        </center>
+
+
+
+    <div id="contentPage">
+        <h2>Laporan Pengguna</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID Komputer</th>
+                    <th>ID User</th>
+                    <th>ID Aplikasi</th>
+                    <th>Jam Awal</th>
+                    <th>Jam Akhir</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!-- isi tabel -->
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+
+            </tbody>
+        </table>
     </div>
 
 </body>
