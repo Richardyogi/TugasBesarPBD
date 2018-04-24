@@ -53,7 +53,7 @@ for
 		statusTemp
 	from
 		@tempTable
-	order by idPenggunaTemp, idUserTemp
+	order by idUserTemp,idPenggunaTemp
 
 open myCursor1
 
