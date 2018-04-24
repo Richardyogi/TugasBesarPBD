@@ -1,4 +1,4 @@
-alter function testTBLRoundRobin(
+create function testTBLRoundRobin(
 	@tanggal date
 )
 RETURNS @resultRoundRobin TABLE(
@@ -19,7 +19,7 @@ BEGIN
 	where
 		tanggal = @tanggal
 	order by
-		FK_USER, id_penggunaan  asc
+		FK_USER, idPengguna  asc
 	RETURN
 END
 
