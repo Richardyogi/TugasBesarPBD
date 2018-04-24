@@ -1,4 +1,4 @@
-ALTER function testTBLRoundRobin(
+create function testTBLRoundRobin(
 	@tanggal date
 )
 RETURNS @resultRoundRobin TABLE(
@@ -19,7 +19,7 @@ BEGIN
 	where
 		tanggal = @tanggal
 	order by
-		FK_USER, id_Penggunaan  asc
+		FK_USER, idPengguna  asc
 	RETURN
 END
 
@@ -28,3 +28,5 @@ END
 --delete RoundRobin where tanggal= CONVERT(date, CURRENT_TIMESTAMP)
 
 --exec RoundRobinSP 10
+
+select * from RoundRobin
