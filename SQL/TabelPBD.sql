@@ -41,7 +41,8 @@ Create Table agr_penggunaan_aplikasi(
 
 Create Table agr_jumlah_pengguna_per_jam(
 	tanggal date,
-	jam time,
+	start_time time,
+	end_time time,
 	jumlah_pengguna int
 )
 
