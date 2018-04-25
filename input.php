@@ -1,5 +1,8 @@
 <?php
-
+ try{
+//$conn= new PDO("sqlsrv:Server=127.0.0.1,1433;Database=test","test","test");
+// $conn->setAttribute( PDO::ATTR_ERRMODE,PDO::);
+ }
 ?>
 
 <!DOCTYPE html>
