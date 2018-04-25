@@ -17,7 +17,7 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
 
 <body>
@@ -28,21 +28,21 @@
 
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link " href="input.html">Input data</a>
+                <a class="nav-link " href="#">Input data</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="rRobin.html">Round Robin</a>
+                <a class="nav-link " href="#">Round Robin</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                     Laporan Lainnya
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="jamSibuk.html">Catatan Jam Sibuk</a>
-                    <a class="dropdown-item" href="pengKom.html">Jumlah Penggunaan Komputer</a>
-                    <a class="dropdown-item" href="waktuPeng.html">Waktu Penggunaan Komputer</a>
-                    <a class="dropdown-item" href="pengApp.html">Penggunaan Aplikasi</a>
-                    <a class="dropdown-item" href="lprnPeng.html">Laporan Pengguna</a>
+                    <a class="dropdown-item" href="#">Catatan Jam Sibuk</a>
+                    <a class="dropdown-item" href="#">Penggunaan Komputer</a>
+                    <a class="dropdown-item" href="#">Waktu Penggunaan Komputer</a>
+                    <a class="dropdown-item" href="#">Penggunaan Aplikasi</a>
+                    <a class="dropdown-item" href="#">Laporan Pengguna</a>
                 </div>
             </li>
         </ul>
@@ -50,24 +50,24 @@
 
 
 
-    <div id="contentPage">
+    <div id="inputPage">
         <h2>Input Database</h2>
         <form action="/action_page.php">
             <div class="form-group">
-                <label for="user">ID Pengguna :</label>
+                <label for="user">Nama Pengguna :</label>
                 <input type="form" class="form-control" placeholder="Masukan nama Pengguna" name="user">
             </div>
             <button type="submit" class="btn btn-primary">Input</button>
             <div class="form-group">
-                <label for="computer">ID Komputer :</label>
+                <label for="computer">Nama Komputer :</label>
                 <input type="form" class="form-control" placeholder="Masukan nama Komputer" name="computer">
             </div>
             <button type="submit" class="btn btn-primary">Input</button>
             <div class="form-group">
-                <label for="app">ID Aplikasi :</label>
-                <input type="form" class="form-control" placeholder="Masukan nama Aplikasi" name="app">
-            </div>
-            <button type="submit" class="btn btn-primary">Input</button>
+                    <label for="app">Nama Aplikasi :</label>
+                    <input type="form" class="form-control" placeholder="Masukan nama Aplikasi" name="app">
+                </div>
+                <button type="submit" class="btn btn-primary">Input</button>
         </form>
     </div>
 

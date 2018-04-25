@@ -1,0 +1,7 @@
+1. ubah input database jadi id semua//
+2. round-robin kurang tabel status//
+3. Daftar jam sibuk: tambahkan inputan yg menerima tanggal yang akan dipilih//
+4. Penggunaan komputer ditambah jadi Jumlah penggunaan komputer//
+    isi tabelnya ada id komputer sama jumlahnya///
+5. Laporan pengguna : id user sama aplikasi jadi diganti jadi nama
+6. Waktu penggunaan komputer: judulnya di lengkapin lagi
