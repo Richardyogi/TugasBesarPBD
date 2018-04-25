@@ -1,5 +1,5 @@
 body{
-    background-image: url("../background.jpg");
+    background-image: url("e:/TugasBesarPBD/assets/css/background.jpg");
     background-size: 100%;
     background-repeat: no-repeat, repeat;
     background-color: #cccccc00; 
@@ -12,9 +12,13 @@ body{
     
 }
 
-#inputPage{
+#contentPage{
     background-color: white;
     margin: 1%;
     margin-top: 2.35% ;
     padding: 5%;
+}
+
+#frmTgl{
+    margin-bottom: 1%;
 }
