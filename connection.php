@@ -7,22 +7,9 @@
     $conn = sqlsrv_connect( $serverName, $connectionInfo);
     
     if( $conn ) {
-         echo "Connection established.<br />";
+         //echo "Connection established.<br />";
     }else{
          echo "Connection could not be established.<br />";
          die( print_r( sqlsrv_errors(), true));
     }
-
-    // $sql = "SELECT * from aplikasi where id_aplikasi=1";
-    // $result = sqlsrv_query( $conn, 
-    //                    'select * from aplikasi where id_aplikasi < 10' , 
-    //                    array( 5 ));
-    
-    //                    while($row = sqlsrv_fetch_array($result))
-    //                    {
-    //                        echo $row['NamaAplikasi'];
-                               
-                               
-    //                         echo "<br>";
-    //                    }
 ?>

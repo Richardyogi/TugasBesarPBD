@@ -1,9 +1,18 @@
-create procedure RoundRobinSP
-	@n int
+alter procedure RoundRobinSP
+	@n int,
+	@time time
 as
 
 declare @currentTime time
-set @currentTime = '08:00:00.000'
+if(@time=null)
+begin
+	set @currentTime = '08:00:00.000'
+end
+else
+begin
+	set @currentTime = convert(time,CURRENT_TIMESTAMP)
+end
+
 declare @curIDUser int
 declare @curIDKomputer int
 declare @curIDApp int

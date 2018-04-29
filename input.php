@@ -1,31 +1,9 @@
-<?php
- try{
-//$conn= new PDO("sqlsrv:Server=127.0.0.1,1433;Database=test","test","test");
-// $conn->setAttribute( PDO::ATTR_ERRMODE,PDO::);
- }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Labkom Report</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="assets/main.css">
-</head>
+<?php
+    include 'connection.php';
+    include 'phpScript.php';
+?>
 
 <body>
     <nav class="navbar navbar-expand-sm bg-dark  navbar-dark">
@@ -56,11 +34,12 @@
     </nav>
 
 
-
+    
     <div id="contentPage">
         <h2>Input Database</h2>
         <form action="/action_page.php">
             <div class="form-group">
+                <!--TODO: perbaiki seharusnya bukan id pengguna tapi nama pengguna, komputer sama aplikasi juga(ajon)-->
                 <label for="user">ID Pengguna :</label>
                 <input type="form" class="form-control" placeholder="Masukan nama Pengguna" name="user">
             </div>
