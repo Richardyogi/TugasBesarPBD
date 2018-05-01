@@ -23,6 +23,8 @@ declare @curTime time
 declare @curStatus int
 declare @curIndex int
 select @curIndex = no_index from INDEX_ROUND_ROBIN
+declare @tempIndex int
+select @tempIndex = no_index from INDEX_ROUND_ROBIN
 
 declare @tempRoundRobin table
 (
@@ -131,7 +133,9 @@ delete INDEX_ROUND_ROBIN
 insert into INDEX_ROUND_ROBIN
 select @curIndex
 
---EXEC RoundRobinSP 500
+DECLARE @N TIME
+SET @N =CONVERT(TIME, CURRENT_TIMESTAMP)
+EXEC RoundRobinSP 500 , @N
 
---select * from RoundRobin
---select * from INDEX_ROUND_ROBIN
+select * from RoundRobin
+select * from INDEX_ROUND_ROBIN

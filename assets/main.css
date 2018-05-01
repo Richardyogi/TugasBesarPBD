@@ -1,16 +1,11 @@
 /*arlin-28/04-membetulkan css bg*/
 body, html {
-    height: 100%;
-    margin: 0;
+  background-image: url("background.jpg");
+  background-size: 100%; 
+  background-repeat: no-repeat, repeat; 
+  background-color: #cccccc00;  
 }
 
-.bg {
-    background-image: url("background.jpg");
-    height: 100%; 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
 #welcome{
     padding: 10px;
@@ -30,3 +25,55 @@ body, html {
 #frmTgl{
     margin-bottom: 1%;
 }
+
+* {box-sizing:border-box}
+.table-scroll {
+  position: relative;
+  top:25px;
+  max-width: 1280px;
+  width:100%;
+  padding:0!important;
+  display:table;
+}
+.table-wrap {
+  width: 100%;
+  display:block;
+  height: 700px;
+  overflow: auto;
+}
+.table-scroll table {
+  width: 100%;
+  margin: auto;
+}
+
+.table-scroll table.clone, .table-scroll table.clone2 {
+  position: absolute;
+  top: -35px;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+.table-scroll table.clone2 {
+  top: auto;
+  bottom: -10px;
+}
+.clone tbody, .clone tfoot {
+  visibility: hidden;
+  border-color: transparent;
+}
+.clone2 tbody, .clone2 thead {
+  visibility: hidden;
+  border-color: transparent;
+}
+
+.table-scroll thead td,
+.table-scroll thead th {height:0px;overflow:hidden;line-height:0;padding:0;border:none;}
+
+.clones thead td,
+.clones thead th
+ {padding:10px;vertical-align:middle;line-height:normal;text-align: left;}
+
+  
+  
+  
+  

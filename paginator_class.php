@@ -17,7 +17,7 @@
             
         }
 
-        public function getData( $limit = 50, $page = 1 ,$start=0, $end=50) {
+        public function getData( $limit, $page = 1 ,$start=0, $end) {
 
             $this->_limit   = $limit;
             $this->_page    = $page;
@@ -41,12 +41,13 @@
           
             return $result;
         }
-            public function createLinks($links, $list_class,$mulai, $berakhir ) {
+
+                public function createLinks($links, $list_class,$mulai, $berakhir ) {
               
                 $this->_end= $berakhir;
                 $this->_start= $mulai;
                 
-                $last       =  $this->_total ;
+                $last       =  $this->_total/$this->_limit ;
 
                 $html       = '<ul class="'. $list_class . '">';
              
@@ -61,15 +62,15 @@
                 
                 
                 for ( $i = $this->_page-3; $i <= $this->_page+3; $i++ ) {
-                    if($i>1){
+                    if($i>=1 && $i<=50000/$this->_limit){
                         $class  = ( $this->_page == $i ) ? " active" : "";
                         $html   .= '<li class="page-item' . $class . '"><a class="page-link" href="?limit=' . $this->_limit . '&page=' . $i  . '&start=' . ( $i*$this->_limit-$this->_limit) . '&end=' . ( $i*$this->_limit ) .'">' . $i . '</a></li>';
                     }
                 }
              
-                if ( $berakhir < $last ) {
+                if ( $berakhir<$last*$this->_limit ) {
                     $html   .= '<li class="disabled page-item"><span>...</span></li>';
-                    $html   .= '<li><a class="page-link" href="?limit=' . $this->_limit . '&page=' . $last  . '&start=49994&end=50000">'.$last.'</a></li>';
+                    $html   .= '<li><a class="page-link" href="?limit=' . $this->_limit . '&page=' . $last . '&start=49994&end=50000">'.$last.'</a></li>';
                 }
              
                 $class      = ( $this->_page == $last ) ? "disabled" : "";
