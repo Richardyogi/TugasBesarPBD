@@ -24,3 +24,4 @@ set @curIndex=@curIndex+1
 delete INDEX_ROUND_ROBIN
 insert into INDEX_ROUND_ROBIN
 select @curIndex
+

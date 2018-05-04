@@ -17,4 +17,4 @@ as
 
 	select * from @tableJumlahPenggunaanKomputer
 
-	exec laporanPenggunaanKomputer 4
+	--exec laporanPenggunaanKomputer 4

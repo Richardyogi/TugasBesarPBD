@@ -131,15 +131,8 @@ as
 		close hitungKomputer2
 		deallocate hitungKomputer2
 
-		select *
-		from agr_penggunaan_komputer
-			
-	exec jumlahPenggunaanKomputer
-	
-	update agr_penggunaan_komputer
-	set jumlah_penggunaan=0,
-		durasi = 0
 
+	
 		
 	
 		

@@ -129,9 +129,9 @@ end
 close myCursor
 deallocate myCursor
 
-delete INDEX_ROUND_ROBIN
-insert into INDEX_ROUND_ROBIN
-select @curIndex
+update INDEX_ROUND_ROBIN
+set no_index = @curIndex
+where no_index = @tempIndex
 
 DECLARE @N TIME
 SET @N =CONVERT(TIME, CURRENT_TIMESTAMP)

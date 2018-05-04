@@ -154,6 +154,6 @@ close cursorStart
 deallocate cursorStart
 
 close cursorEnd
-deallocate cursorStart
+deallocate cursorEnd
 
 

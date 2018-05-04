@@ -1,5 +1,6 @@
 alter procedure jumlahPenggunaAplikasi
 as
+
 	declare @idAplikasi int
 	declare @status int
 	declare @tabelAplikasi table(
@@ -46,19 +47,6 @@ as
 	close cariAplikasi
 	deallocate cariAplikasi
 
-	select
-		*
-	from
-		agr_penggunaan_aplikasi
-
-	exec jumlahPenggunaAplikasi
+	
 
 	
-	update agr_penggunaan_aplikasi
-	set jumlah_pengguna=0
-
-	select
-		*
-	from testTBLRoundRobin(CONVERT(date,CURRENT_TIMESTAMP))
-	exec jumlahPenggunaAplikasi
-
