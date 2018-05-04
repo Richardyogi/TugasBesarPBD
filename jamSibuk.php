@@ -31,9 +31,9 @@
                     $sql = "SELECT * from agr_jumlah_pengguna_per_jam";
                     $rs = sqlsrv_query( $conn,$sql);
                     while( $row = sqlsrv_fetch_array( $rs, SQLSRV_FETCH_ASSOC) ) {
-                        echo "<tr><td>".$row["Tanggal"]."</td><td>".
-                        $row["Start_Time"]."</td><td>".
-                        $row["End_time"]."</td><td>".
+                        echo "<tr><td>".$row["tanggal"]->format('d-m-Y')."</td><td>".
+                        $row["start_time"]->format('H:i:s')."</td><td>".
+                        $row["end_time"]->format('H:i:s')."</td><td>".
                         $row["jumlah_pengguna"]."</td></tr>";
                   }
                   
