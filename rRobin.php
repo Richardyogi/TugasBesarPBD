@@ -8,11 +8,22 @@
         if(!isset($_post["jumlahUser"])){
             if(empty($_POST["jumlahUser"])){
                 echo '<script type="text/javascript">alert("jumlah user harus diisi");</script>';
+            }else if( empty($_POST["radioJamMulai"])){
+                echo '<script type="text/javascript">alert("waktu mulai harus diisi");</script>';
+            }else if(empty($_POST["radioJamMulai"]) || empty($_POST["jumlahUser"])){
+                echo '<script type="text/javascript">alert("jumlah user dan waktu mulai harus diisi");</script>';
             }else{
-                $sql = 'declare @n time
-                        set @n = convert(time,current_timestamp)
-                        exec RoundRobinSP '.$_POST["jumlahUser"].', @n';
+                $sql='declare @n time';
+                if($_POST["radioJamMulai"]=="waktuSekarang"){
+                    $sql.= ' set @n = convert(time,current_timestamp);';
+                }else{
+                    $sql.= ' set @n = null;';
+                }
+                $sql .= ' exec RoundRobinSP '.$_POST["jumlahUser"].', @n;';
                 $stmt1 = sqlsrv_query($conn, $sql);
+                var_dump($stmt1);
+                echo sqlsrv_errors();
+                echo sqlsrv_rows_affected($stmt1);
  
             if( $stmt1 === false )  
             {  
@@ -146,7 +157,17 @@
                         <div class="form-group">
                             <input type="number" class="form-control" name="jumlahUser" id="jumlahUser" min="1" max="25000">
                         </div>
-                    
+                        <span>Pilih waktu awal generate:</span> <br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radioJamMulai" value="waktuLabBuka">
+                            <label class="form-check-label" for="inlineRadio1">waktu lab buka (08:00)</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radioJamMulai" value="waktuSekarang">
+                            <label class="form-check-label" for="inlineRadio2">waktu saat ini</label>
+                        </div>
+                        <br>
+                        <br>    
                         <button type="submit" class="btn btn-primary" value="submit">Submit</button>
                     </form>
                 </div>

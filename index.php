@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+    
     include 'connection.php';
     include 'phpScript.php';
 ?>
@@ -46,4 +47,4 @@
     </div>
 </body>
 
-</html>
+</html>s

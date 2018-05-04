@@ -61,7 +61,7 @@
                 }
                 
                 
-                for ( $i = $this->_page-3; $i <= $this->_page+3; $i++ ) {
+                for ( $i = $this->_page-5; $i <= $this->_page+5; $i++ ) {
                     if($i>=1 && $i<=50000/$this->_limit){
                         $class  = ( $this->_page == $i ) ? " active" : "";
                         $html   .= '<li class="page-item' . $class . '"><a class="page-link" href="?limit=' . $this->_limit . '&page=' . $i  . '&start=' . ( $i*$this->_limit-$this->_limit) . '&end=' . ( $i*$this->_limit ) .'">' . $i . '</a></li>';
