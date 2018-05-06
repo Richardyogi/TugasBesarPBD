@@ -5,7 +5,7 @@
 <?php
     $stmt1;
     if($_SERVER["REQUEST_METHOD"]=="POST"){
-        if(!isset($_post["jumlahUser"])){
+        if(isset($_POST["jumlahUser"])){
             if(empty($_POST["jumlahUser"])){
                 echo '<script type="text/javascript">alert("jumlah user harus diisi");</script>';
             }else if( empty($_POST["radioJamMulai"])){
@@ -25,20 +25,12 @@
                     $sql.= ' exec RoundRobinSP '.$_POST["jumlahUser"].', "08:00:00"';
                 }
                 
-                echo $sql;
-                $stmt1 = sqlsrv_query($conn, $sql);
                 
- 
-            if( $stmt1 === false )  
-            {  
-                echo "Error in executing.\n";  
-                die( print_r( sqlsrv_errors(), true));  
-            }else if( $stmt1 === TRUE ) {
-                echo '<script type="text/javascript">alert("data berhasil dimasukkan");</script>';
-            }
+                $stmt1 = sqlsrv_query($conn, $sql);
+                echo '<script type="text/javascript">alert("data random berhasil dimasukkan ke round robin");</script>';
 
             }
-        }else if(!isset($_post["id-user"])||!isset($_post["id-aplikasi"])||!isset($_post["id-komputer"])||!isset($_post["status"])){
+        }else if(!isset($_POST["id-user"])||!isset($_POST["id-aplikasi"])||!isset($_POST["id-komputer"])||!isset($_POST["status"])){
             if(empty($_POST["id-user"])){
                 echo '<script type="text/javascript">alert("id user harus diisi");</script>';
             }else if(empty($_POST["id-komputer"])){
@@ -47,16 +39,16 @@
                 echo '<script type="text/javascript">alert("id aplikasi harus diisi");</script>';
             }else if(empty($_POST["status"]) && $_POST["status"]!=0){
                 echo '<script type="text/javascript">alert("status harus diisi");</script>';
+            }
+        }else{
+            $sql = 'exec singleInsertRoundRobin '.$_POST["id-user"].",".$_POST["id-komputer"].",".$_POST["id-aplikasi"].",".$_POST["status"];
+            $stmt1 = sqlsrv_query($conn, $sql);
+            if( $stmt1 === false )  
+            {  
+                echo "Error in executing statement 1.\n";  
+                die( print_r( sqlsrv_errors(), true));  
             }else{
-                $sql = 'exec singleInsertRoundRobin '.$_POST["id-user"].",".$_POST["id-komputer"].",".$_POST["id-aplikasi"].",".$_POST["status"];
-                $stmt1 = sqlsrv_query($conn, $sql);
-                if( $stmt1 === false )  
-                {  
-                    echo "Error in executing statement 1.\n";  
-                    die( print_r( sqlsrv_errors(), true));  
-                }else{
-                    echo '<script type="text/javascript">alert("single data berhasil dimasukkan");</script>';
-                }
+                echo '<script type="text/javascript">alert("single data berhasil dimasukkan ke round robin");</script>';
             }
         }
     }

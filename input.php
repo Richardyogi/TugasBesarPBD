@@ -9,7 +9,7 @@
     $stmt1;
     $stmt2;
     if($_SERVER["REQUEST_METHOD"]=="POST"){
-        if(!isset($_POST["user"])){
+        if(isset($_POST["user"])){
             if($_POST["user"]==null){
                 echo '<script type="text/javascript">alert("nama user harus diisi");</script>';
             }
@@ -27,7 +27,7 @@
             }           
         }
 
-        else if(!isset($_POST["app"])){
+        else if(isset($_POST["app"])){
             if($_POST["app"]==null){
                 echo '<script type="text/javascript">alert("nama aplikasi harus diisi");</script>';
             }
@@ -89,6 +89,10 @@
                 <input type="form" class="form-control" placeholder="Masukan nama Pengguna" name="user">
             </div>
             <button type="submit" class="btn btn-primary">Input</button>
+           
+        </form>
+
+        <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> method="post">
             <div class="form-group">
                 <label for="app">Nama Aplikasi :</label>
                 <input type="form" class="form-control" placeholder="Masukan nama Aplikasi" name="app">
