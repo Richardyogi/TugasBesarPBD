@@ -11,7 +11,7 @@
                 <a class="nav-link " href="rRobin.php">Round Robin</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="agregasi.html">Agregasi</a>
+                <a class="nav-link " href="agregasi.php">Agregasi</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -23,6 +23,7 @@
                         <a class="dropdown-item" href="waktuPeng.php">Waktu Penggunaan Komputer</a>
                         <a class="dropdown-item" href="pengApp.php">Penggunaan Aplikasi</a>
                         <a class="dropdown-item" href="lprnPeng.php">Laporan Pengguna</a>
+                        
                 </div>
             </li>
         </ul>

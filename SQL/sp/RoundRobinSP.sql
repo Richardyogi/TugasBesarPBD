@@ -3,15 +3,8 @@ alter procedure RoundRobinSP
 	@time time
 as
 
-declare @currentTime time
-if(@time=null)
-begin
-	set @currentTime = '08:00:00.000'
-end
-else
-begin
-	set @currentTime = convert(time,CURRENT_TIMESTAMP)
-end
+
+select @time
 
 declare @curIDUser int
 declare @curIDKomputer int
@@ -44,7 +37,7 @@ begin
 	set @n=@n-1
 
 	declare @startTime time
-	set @startTime = dateadd(second, rand()*(1800-1)+0, @currentTime)
+	set @startTime = dateadd(second, rand()*(1800-1)+0, @time)
 
 	if(@startTime>'17:30:00')
 	set @startTime = dateadd(second, rand()*(1800-1)+0, '08:00:00')
@@ -73,7 +66,7 @@ begin
 		@endTime, 
 		0
 
-	set @currentTime = @startTime
+	set @time = @startTime
 end
 
 declare myCursor cursor
@@ -133,9 +126,9 @@ update INDEX_ROUND_ROBIN
 set no_index = @curIndex
 where no_index = @tempIndex
 
-DECLARE @N TIME
-SET @N =CONVERT(TIME, CURRENT_TIMESTAMP)
-EXEC RoundRobinSP 500 , @N
+--DECLARE @N TIME
+--SET @N =CONVERT(TIME, CURRENT_TIMESTAMP)
+----EXEC RoundRobinSP 500 , @N
 
-select * from RoundRobin
-select * from INDEX_ROUND_ROBIN
+----select * from RoundRobin
+--select * from INDEX_ROUND_ROBIN

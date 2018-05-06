@@ -16,14 +16,18 @@
                 $sql='declare @n time';
                 if($_POST["radioJamMulai"]=="waktuSekarang"){
                     $sql.= ' set @n = convert(time,current_timestamp);';
+                    $sql.= ' exec RoundRobinSP '.$_POST["jumlahUser"].', @n;';
+                }else if($_POST["radioJamMulai"]=="waktuTerakhir"){
+                    $sql.= ' set @n = dbo.cariJamTerakhirDiRoundRobin();';
+                    $sql.= ' exec RoundRobinSP '.$_POST["jumlahUser"].', @n;';
                 }else{
                     $sql.= ' set @n = null;';
+                    $sql.= ' exec RoundRobinSP '.$_POST["jumlahUser"].', "08:00:00"';
                 }
-                $sql .= ' exec RoundRobinSP '.$_POST["jumlahUser"].', @n;';
+                
+                echo $sql;
                 $stmt1 = sqlsrv_query($conn, $sql);
-                var_dump($stmt1);
-                echo sqlsrv_errors();
-                echo sqlsrv_rows_affected($stmt1);
+                
  
             if( $stmt1 === false )  
             {  
@@ -165,6 +169,10 @@
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="radioJamMulai" value="waktuSekarang">
                             <label class="form-check-label" for="inlineRadio2">waktu saat ini</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radioJamMulai" value="waktuTerakhir">
+                            <label class="form-check-label" for="inlineRadio2">waktu pengguna terakhir hari ini</label>
                         </div>
                         <br>
                         <br>    
