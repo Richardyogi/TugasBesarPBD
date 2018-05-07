@@ -2,24 +2,28 @@ alter procedure jumlahPenggunaAplikasi
 as
 
 	declare @idAplikasi int
-	declare @status int
+	declare @jumlahAplikasi int
 	declare @tabelAplikasi table(
 		idAplikasi int,
-		statusAplikasi int
+		jumlahAplikasi int
 	)
-
+	
 	insert into @tabelAplikasi
 	select 
 		idAplikasi,
-		status
+		COUNT(idAplikasi)
 	from
-		testTBLRoundRobin(CONVERT(date,CURRENT_TIMESTAMP))
+		dbo.rekapRoundRobin(convert(date,CURRENT_TIMESTAMP)) 
+	group by
+		idAplikasi
+
+	
 
 	declare cariAplikasi cursor
 	for
 		select
 			idAplikasi,
-			statusAplikasi
+			jumlahAplikasi
 		from
 			@tabelAplikasi
 	
@@ -29,23 +33,29 @@ as
 		cariAplikasi
 	into
 		@idAplikasi,
-		@status
+		@jumlahAplikasi
 
-	while(@@FETCH_STATUS=0 and @status = 1)
+	while(@@FETCH_STATUS=0 )
 	begin
 		
 		update agr_penggunaan_aplikasi
-		set jumlah_pengguna = jumlah_pengguna +1
+		set jumlah_pengguna = jumlah_pengguna + @jumlahAplikasi
 		where FK_Aplikasi =@idAplikasi
 
 		fetch next from
 			cariAplikasi
 		into
 			@idAplikasi,
-			@status
+			@jumlahAplikasi
 	end
 	close cariAplikasi
 	deallocate cariAplikasi
+
+
+
+
+
+
 
 	
 
