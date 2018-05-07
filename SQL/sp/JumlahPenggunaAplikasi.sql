@@ -1,4 +1,5 @@
 alter procedure jumlahPenggunaAplikasi
+	@date date
 as
 
 	declare @idAplikasi int
@@ -13,7 +14,7 @@ as
 		idAplikasi,
 		COUNT(idAplikasi)
 	from
-		dbo.rekapRoundRobin(convert(date,CURRENT_TIMESTAMP)) 
+		dbo.rekapRoundRobin(@date) 
 	group by
 		idAplikasi
 
@@ -51,11 +52,12 @@ as
 	close cariAplikasi
 	deallocate cariAplikasi
 
+select * from agr_penggunaan_aplikasi
+select *
+from
+		RoundRobin where fk_user is not null
 
-
-
-
-
+exec jumlahPenggunaAplikasi
 
 	
 
