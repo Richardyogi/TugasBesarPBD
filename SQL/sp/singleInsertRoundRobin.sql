@@ -8,6 +8,11 @@ as
 declare @curIndex int
 select @curIndex = no_index from INDEX_ROUND_ROBIN
 
+if(@curIndex>50000)
+begin
+	set @curIndex=1
+end
+
 update RoundRobin
 	set 
 		FK_User = @parUser,

@@ -5,19 +5,10 @@ declare @currentTime time
 set @currentTime = '08:00:00'
 declare @n int
 set @n =0
-
-while(@n < 11)
-begin
-	insert into agr_jumlah_pengguna_per_jam
-	select
-		CONVERT (DATE, CURRENT_TIMESTAMP),
-		@currentTime,
-		DATEADD(hour,1,@currentTime),
-		0		 
-
-	set @currentTime= DATEADD(hour,1,@currentTime)
-	set @n=@n+1
-end
+declare @awal time
+set @awal ='08:00:00'
+declare @akhir time
+set @akhir = '09:00:00'
 
 declare @tempTable table
 (
@@ -87,73 +78,96 @@ end
 close myCursor1 
 deallocate myCursor1
 
------ variable start time dan end time ----
-declare @startTime time
-declare @endTime time
+declare @jumlahPengguna int
+set @jumlahPengguna=0
 
----------time dan status end when-------
-declare @time2 time
-declare @status2 int
-
-------cursor  start------------
-declare cursorStart cursor
-for
-	select
-		jamTemp2
-	from 
-		@tempTable2
-	where
-		statusTemp2=1
-
-------cursor End------------
-declare cursorEnd cursor
-for
-	select
-		jamTemp2
-	from 
-		@tempTable2
-	where
-		statusTemp2=0
-
-open cursorStart
-open cursorEnd
-
-fetch next from 
-	cursorStart
-into
-	@time
-
-fetch next from 
-	cursorEnd
-into
-	@time2
-	
-while(@@FETCH_STATUS=0)
+while(@n < 11)
 begin
+	select @jumlahPengguna = count(*) 
+	insert into agr_jumlah_pengguna_per_jam
+	select
+		CONVERT (DATE, CURRENT_TIMESTAMP),
+		@currentTime,
+		DATEADD(second,3599,@currentTime),
+		0		 
 
-	while(@time<@time2)
-	begin
-		update agr_jumlah_pengguna_per_jam
-		set jumlah_pengguna = jumlah_pengguna+1
-		where agr_jumlah_pengguna_per_jam.start_time<@time and agr_jumlah_pengguna_per_jam.end_time>=@time
-
-		set @time = DATEADD(hour, 1, @time)
-	end
-	fetch next from 
-		cursorStart
-	into
-		@time
-
-	fetch next from 
-		cursorEnd
-	into
-		@time2
+	set @currentTime= DATEADD(hour,1,@currentTime)
+	set @n=@n+1
 end
 
-close cursorStart
-deallocate cursorStart
 
-close cursorEnd
-deallocate cursorEnd
+
+
+------- variable start time dan end time ----
+--declare @startTime time
+--declare @endTime time
+
+-----------time dan status end when-------
+--declare @time2 time
+--declare @status2 int
+
+--------cursor  start------------
+--declare cursorStart cursor
+--for
+--	select
+--		jamTemp2
+--	from 
+--		@tempTable2
+--	where
+--		statusTemp2=1
+
+--------cursor End------------
+--declare cursorEnd cursor
+--for
+--	select
+--		jamTemp2
+--	from 
+--		@tempTable2
+--	where
+--		statusTemp2=0
+
+--open cursorStart
+--open cursorEnd
+
+--fetch next from 
+--	cursorStart
+--into
+--	@time
+
+--fetch next from 
+--	cursorEnd
+--into
+--	@time2
+	
+--while(@@FETCH_STATUS=0)
+--begin
+
+--	while(@time<DATEADD(hour, 1, @time2))
+--	begin
+--		if(@time<DATEADD(hour,1,@time2))
+--		begin
+--			update agr_jumlah_pengguna_per_jam
+--			set jumlah_pengguna = jumlah_pengguna+1
+--			where agr_jumlah_pengguna_per_jam.start_time<=@time and agr_jumlah_pengguna_per_jam.end_time>=@time
+			
+--			set @time = DATEADD(hour, 1, @time)
+--		end		
+--	end
+--	fetch next from 
+--		cursorStart
+--	into
+--		@time
+
+--	fetch next from 
+--		cursorEnd
+--	into
+--		@time2
+--end
+
+--close cursorStart
+--deallocate cursorStart
+
+--close cursorEnd
+--deallocate cursorEnd
 
 
