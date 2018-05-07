@@ -6,3 +6,5 @@ select
 	*
 from
 	dbo.rekapRoundRobin(@date)
+
+	

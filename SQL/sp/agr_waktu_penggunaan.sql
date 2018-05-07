@@ -1,4 +1,4 @@
-create procedure agr_waktu_penggunaan
+alter procedure agr_waktu_penggunaan
 	@date date
 as
 
@@ -51,7 +51,11 @@ end
 --declare @k date
 --set @k= convert(date, CURRENT_TIMESTAMP)
 ----select * from dbo.rekapRoundRobin(@n)
-----exec agr_waktu_penggunaan @k
+--exec agr_aktivitas_userSP @k 
 
 --select * from agr_jumlah_pengguna_per_jam
 --select * from dbo.rekapRoundRobin(@k)
+
+--delete agr_jumlah_pengguna_per_jam
+
+select * from agr_aktivitas_user
