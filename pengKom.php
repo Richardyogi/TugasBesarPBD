@@ -11,7 +11,7 @@
     ?>
     <div id="contentPage">
         <h2>Daftar Jumlah Penggunaan Komputer</h2>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Id Komputer</th>

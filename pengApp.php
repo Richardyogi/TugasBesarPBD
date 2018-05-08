@@ -13,7 +13,7 @@
 
     <div id="contentPage">
         <h2>Daftar Penggunaan Aplikasi</h2>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Id</th>

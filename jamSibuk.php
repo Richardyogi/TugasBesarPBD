@@ -14,7 +14,7 @@
         <h2>Tabel Catatan Pengguna di Range 1 Jam</h2>
         <br>
         
-        <table class="table table-bordered">
+        <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Tanggal</th>

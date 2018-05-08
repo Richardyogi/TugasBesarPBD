@@ -11,7 +11,7 @@
 
     <div id="contentPage">
         <h2>Laporan Pengguna</h2>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-striped ">
             <thead>
                 <tr>
                     <th>ID User</th>
@@ -36,7 +36,7 @@
                              $row["FK_Aplikasi"]."</td><td>".
                              $row["tanggal"]->format('d-m-Y')."</td><td>".
                              $row["waktu_mulai"]->format('H:i:s')."</td><td>".
-                             $row["waktu_akhir"]->format('H:i:s')."</td><td></tr>";
+                             $row["waktu_akhir"]->format('H:i:s')."</td></tr>";
                          }
                     ?>
                    
