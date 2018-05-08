@@ -58,4 +58,4 @@ end
 
 --delete agr_jumlah_pengguna_per_jam
 
-select * from agr_aktivitas_user
+--select * from agr_aktivitas_user
