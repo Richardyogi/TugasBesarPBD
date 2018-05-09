@@ -15,14 +15,14 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                    Laporan Lainnya
+                   Tabel dan Laporan Lainnya
                 </a>
                 <div class="dropdown-menu">
-                        <a class="dropdown-item" href="jamSibuk.php">Catatan Jam Sibuk</a>
-                        <a class="dropdown-item" href="pengKom.php">Jumlah Penggunaan Komputer</a>
-                        <a class="dropdown-item" href="waktuPeng.php">Waktu Penggunaan Komputer</a>
-                        <a class="dropdown-item" href="pengApp.php">Penggunaan Aplikasi</a>
-                        <a class="dropdown-item" href="lprnPeng.php">Laporan Pengguna</a>
+                        <a class="dropdown-item" href="jamSibuk.php">Tabel Jumlah Pengguna Per Jam</a>
+                        <a class="dropdown-item" href="pengKom.php">Tabel Penggunaan Komputer</a>
+                        <a class="dropdown-item" href="pengApp.php">Tabel Aplikasi</a>
+                        <a class="dropdown-item" href="lprnPeng.php">Tabel Logging Pengguna</a>
+                        <a class="dropdown-item" href="waktuPeng.php">Laporan Keseluruhan</a>
                         
                 </div>
             </li>

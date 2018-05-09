@@ -11,18 +11,10 @@
     ?>
 
     <div id="contentPage">
-        <h2>Jam Sibuk</h2>
-        <br>
-        <span>Pilih tanggal yang ingin dilihat:</span>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-            Tanggal
-            <input type="date" name="tglCatat">
-            <input type="submit" class="btn btn-primary">
-          </form>
+        <h2>Tabel Catatan Pengguna di Range 1 Jam</h2>
         <br>
         
-        <h6>Tabel Catatan Pengguna di Range 1 Jam</h6>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Tanggal</th>
