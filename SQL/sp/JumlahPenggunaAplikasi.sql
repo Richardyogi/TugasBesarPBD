@@ -1,8 +1,9 @@
-alter procedure jumlahPenggunaAplikasi
-	@date date
+create procedure jumlahPenggunaAplikasi
 as
 
 	declare @idAplikasi int
+	declare @date date
+	set @date= convert(date, CURRENT_TIMESTAMP)
 	declare @jumlahAplikasi int
 	declare @tabelAplikasi table(
 		idAplikasi int,
@@ -52,12 +53,12 @@ as
 	close cariAplikasi
 	deallocate cariAplikasi
 
-select * from agr_penggunaan_aplikasi
-select *
-from
-		RoundRobin where fk_user is not null
+--select * from agr_penggunaan_aplikasi
+--select *
+--from
+--		RoundRobin where fk_user is not null
 
-exec jumlahPenggunaAplikasi
+--exec jumlahPenggunaAplikasi
 
 	
 

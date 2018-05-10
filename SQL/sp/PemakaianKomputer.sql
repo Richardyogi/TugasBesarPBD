@@ -1,10 +1,11 @@
 create procedure jumlahPenggunaanKomputer
- @date date
 as
 
  declare @idKomputer int
  declare @jumlahKomputer int
  declare @waktuAwal time
+ declare @date date
+ set @date= convert(date, CURRENT_TIMESTAMP)
  declare @waktuAkhir time
  declare @tabelKomputer table(
   idKomputer int,
@@ -25,6 +26,37 @@ as
  group by
   idKomputer
 
+declare myCursor cursor
+for
+select
+	idKomputer,
+	jumlahKomputer
+from
+	@tabelKomputer
+
+open myCursor
+
+fetch next from myCursor
+into
+	@idKomputer,
+	@jumlahKomputer
+
+while(@@FETCH_STATUS=0)
+begin
+	update agr_penggunaan_komputer
+  set
+   jumlah_penggunaan = jumlah_penggunaan+@jumlahKomputer
+   where
+	FK_Komputer = @idKomputer
+
+	fetch next from myCursor
+	into
+		@idKomputer,
+		@jumlahKomputer
+end
+
+close myCursor
+deallocate myCursor
 
  declare cariKomputer cursor
  for
@@ -47,10 +79,11 @@ as
  while(@@FETCH_STATUS=0 )
  begin
   
-  insert into @tabelWaktu
-  select 
-   @idKomputer,
-   DATEDIFF(second, @waktuAwal,@waktuAkhir)
+  update agr_penggunaan_komputer
+  set
+		durasi = durasi+ DATEDIFF(second, @waktuAwal,@waktuAkhir)
+   where
+		FK_Komputer= @idKomputer
 
   fetch next from
    cariKomputer
@@ -62,23 +95,18 @@ as
  close cariKomputer
  deallocate cariKomputer
 
- insert into agr_penggunaan_komputer
- select
-  idKomputer,
-  jumlahKomputer,
-  waktu
- from
-  @tabelKomputer join @tabelWaktu on idKomputer=idKomputer1
-
  select * from @tabelKomputer
  select * from @tabelWaktu
 
  --declare @d date
  --set @d = convert(date, CURRENT_TIMESTAMP)
  --exec jumlahPenggunaanKomputer @d
-
  --select * from agr_penggunaan_komputer
 
+
+
+--exec jumlahPenggunaanKomputer
+--select * from agr_penggunaan_komputer
  
  --exec RoundRobinSP 10,@d
 --select * from agr_penggunaan_aplikasi

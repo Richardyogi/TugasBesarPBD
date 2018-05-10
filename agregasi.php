@@ -6,7 +6,7 @@
     include 'phpScript.php';
 
     if($_SERVER["REQUEST_METHOD"]=="POST"){
-        $sql= "exec InsertIntoAgregat";
+        $sql= "exec InsertIntoAgregat ";
         $stmt1 = sqlsrv_query($conn, $sql);
         echo '<script type="text/javascript">alert("agregat jam 24:00 selesai");</script>';
     }
