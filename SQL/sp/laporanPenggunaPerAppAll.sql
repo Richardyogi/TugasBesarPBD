@@ -1,4 +1,8 @@
-alter procedure LaporanPenggunaAplikasiAll
+create procedure LaporanPenggunaAplikasiAll
 as
 
-select * from agr_penggunaan_aplikasi
+SELECT 
+	* 
+from 
+	agr_penggunaan_aplikasi join aplikasi 
+	on agr_penggunaan_aplikasi.FK_Aplikasi=id_aplikasi
