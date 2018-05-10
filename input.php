@@ -39,7 +39,7 @@
                 {  
                     echo "Error in executing.\n";  
                     die( print_r( sqlsrv_errors(), true));  
-                }else if( $stmt2 === TRUE ) {
+                }else {
                     echo '<script type="text/javascript">alert("data aplikasi berhasil dimasukkan");</script>';
                 }
             }
