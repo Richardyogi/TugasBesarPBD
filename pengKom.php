@@ -8,8 +8,18 @@
     <?php
         include 'header.php';
     ?>
+
     <div id="contentPage">
     <h2>Daftar Jumlah Penggunaan Komputer</h2>
+    <br>
+    <span>Search berdasarkan id komputer:</span>
+    <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> method="post">
+        <div class="search-container">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
+    </form>
+    <br>
     <?php
          $stmt;
          $stmt1;
@@ -75,12 +85,7 @@
              echo "</table>";  
          }
     ?>
-    <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> method="post">
-        <div class="search-container">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </div>
-    </form>
+ 
 
     </div>
 

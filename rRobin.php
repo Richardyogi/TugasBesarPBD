@@ -64,7 +64,7 @@
     <!--TODO: include header di setiap page seperti ini(ajon)-->
    <div class="bg">
    <?php
-       // include 'header.php';
+        include 'header.php';
     ?>
 
     <div id="contentPage">

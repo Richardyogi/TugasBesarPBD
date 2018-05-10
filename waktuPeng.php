@@ -107,7 +107,11 @@ var dataKomputer = {
         scaleLabel: {
             display: true,
             labelString: "jumlah pengguna"
-          }
+          },
+          ticks: {
+                min:1,
+                stepSize: 1
+            }
       }]
     }
   };
