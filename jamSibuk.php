@@ -47,7 +47,7 @@
                             }
                         }
                     }else{
-                        $sql = "SELECT * from agr_jumlah_pengguna_per_jam";
+                        $sql = "exec selectAll 'agr_jumlah_pengguna_per_jam'";
                         $rs = sqlsrv_query( $conn,$sql);
                         while( $row = sqlsrv_fetch_array( $rs, SQLSRV_FETCH_ASSOC) ) {
                             echo "<tr><td>".$row["tanggal"]->format('d-m-Y')."</td><td>".

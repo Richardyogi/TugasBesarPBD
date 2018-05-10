@@ -31,7 +31,7 @@
                 <tr>
                     <!-- isi tabel -->
                     <?php
-                         $sql = "SELECT * from agr_aktivitas_user";
+                         $sql = "exec selectAll 'agr_aktivitas_user'";
                          $rs = sqlsrv_query( $conn,$sql);
                          while( $row = sqlsrv_fetch_array( $rs, SQLSRV_FETCH_ASSOC) ) {
                              echo "<tr><td>".
