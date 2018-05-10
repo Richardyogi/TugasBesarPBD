@@ -61,7 +61,7 @@
              }
          }
          else{
-             $sql1 = "SELECT * from agr_penggunaan_komputer";
+             $sql1 = "exec selectAll 'agr_penggunaan_komputer'";
              $stmt1 = sqlsrv_query($conn,$sql1);
  
              echo "<table class='table table-bordered table-striped'>";
