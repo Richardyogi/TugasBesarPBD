@@ -25,10 +25,13 @@
                     $sql.= ' exec RoundRobinSP '.$_POST["jumlahUser"].', "08:00:00"';
                 }
                 
-                
                 $stmt1 = sqlsrv_query($conn, $sql);
+                sqlsrv_errors();
+                while( $row = sqlsrv_fetch_array( $stmt1, SQLSRV_FETCH_ASSOC) ) {
+                    echo $row["pengguna1"];
+                }  
                 echo '<script type="text/javascript">alert("data random berhasil dimasukkan ke round robin");</script>';
-
+                
             }
         }else if(!isset($_POST["id-user"])||!isset($_POST["id-aplikasi"])||!isset($_POST["id-komputer"])||!isset($_POST["status"])){
             if(empty($_POST["id-user"])){
@@ -61,7 +64,7 @@
     <!--TODO: include header di setiap page seperti ini(ajon)-->
    <div class="bg">
    <?php
-        include 'header.php';
+       // include 'header.php';
     ?>
 
     <div id="contentPage">
