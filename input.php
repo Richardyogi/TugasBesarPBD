@@ -14,7 +14,8 @@
                 echo '<script type="text/javascript">alert("nama user harus diisi");</script>';
             }
             else{
-                $sql1 = 'exec insertUser '.$_POST["user"].'';
+                $sql1 = "exec insertData 'User','".$_POST["user"]."'";
+                echo $sql1;
                 $stmt1 = sqlsrv_query($conn,$sql1);
 
                 if( $stmt1 === false )  
@@ -32,8 +33,8 @@
                 echo '<script type="text/javascript">alert("nama aplikasi harus diisi");</script>';
             }
             else{
-                $sql2 = 'exec insertAplikasi '.$_POST["app"].'';
-                $stmt2 = sqlsrv_query($conn,$sql1);
+                $sql2 = "exec insertData 'Aplikasi','".$_POST["app"]."'";
+                $stmt2 = sqlsrv_query($conn,$sql2);
 
                 if( $stmt2 === false )  
                 {  
