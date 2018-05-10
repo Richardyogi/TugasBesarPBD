@@ -11,6 +11,10 @@
 
     <div id="contentPage">
         <h2>Laporan Pengguna</h2>
+        <div class="search-container">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
         <table class="table table-bordered table-striped ">
             <thead>
                 <tr>

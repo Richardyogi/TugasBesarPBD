@@ -26,6 +26,11 @@ body, html {
     margin-bottom: 1%;
 }
 
+#searchBar{
+  float: right;
+  size: -50%;
+}
+
 * {box-sizing:border-box}
 .table-scroll {
   position: relative;
