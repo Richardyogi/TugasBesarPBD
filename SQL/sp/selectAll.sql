@@ -1,4 +1,4 @@
-create procedure selectAll
+alter procedure selectAll
 	@name varchar(200)
 as
 
