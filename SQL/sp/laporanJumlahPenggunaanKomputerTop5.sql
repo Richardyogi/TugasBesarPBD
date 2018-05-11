@@ -1,4 +1,4 @@
-create procedure laporanJumlahPenggunaanKomputerTop5
+alter procedure laporanJumlahPenggunaanKomputerTop5
 as
 	select TOP 5
 		FK_Komputer,jumlah_penggunaan

@@ -1,4 +1,4 @@
-create procedure jumlahPenggunaAplikasi
+alter procedure jumlahPenggunaAplikasi
 as
 
 	declare @idAplikasi int

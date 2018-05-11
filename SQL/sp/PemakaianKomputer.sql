@@ -1,4 +1,4 @@
-create procedure jumlahPenggunaanKomputer
+alter procedure jumlahPenggunaanKomputer
 as
 
  declare @idKomputer int

@@ -74,12 +74,12 @@
              echo "</thead>";
              echo "<tbody>";
                  echo "<tr>";
-                     while( $row = sqlsrv_fetch_array( $stmt1, SQLSRV_FETCH_ASSOC) ) {
-                     echo "<tr><td>".
-                         $row["FK_Komputer"]."</td><td>".
-                         $row["jumlah_penggunaan"]."</td><td>".
-                         $row["durasi"]."</td></tr>";
-                     } 
+                    //  while( $row = sqlsrv_fetch_array( $stmt1, SQLSRV_FETCH_ASSOC) ) {
+                    //  echo "<tr><td>".
+                    //      $row["FK_Komputer"]."</td><td>".
+                    //      $row["jumlah_penggunaan"]."</td><td>".
+                    //      $row["durasi"]."</td></tr>";
+                    //  } 
                  echo "</tr>";
              echo "</tbody>";
              echo "</table>";  
