@@ -1,6 +1,8 @@
 alter procedure jumlahPenggunaanKomputer
 as
 
+set nocount on
+
  declare @idKomputer int
  declare @jumlahKomputer int
  declare @waktuAwal time

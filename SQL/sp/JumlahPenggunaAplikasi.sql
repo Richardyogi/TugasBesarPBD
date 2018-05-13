@@ -1,6 +1,8 @@
 alter procedure jumlahPenggunaAplikasi
 as
 
+set nocount on
+
 	declare @idAplikasi int
 	declare @date date
 	set @date= convert(date, CURRENT_TIMESTAMP)

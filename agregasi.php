@@ -8,6 +8,9 @@
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $sql= "exec InsertIntoAgregat ";
         $stmt1 = sqlsrv_query($conn, $sql);
+        while( $row = sqlsrv_fetch_array( $stmt1, SQLSRV_FETCH_ASSOC) ) {
+            echo "";
+        }  
         echo '<script type="text/javascript">alert("agregat jam 24:00 selesai");</script>';
     }
 ?>

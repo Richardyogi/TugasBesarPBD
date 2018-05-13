@@ -1,9 +1,8 @@
 alter procedure agr_waktu_penggunaan
 as
 
-declare @date date
-set @date = convert(date,CURRENT_TIMESTAMP)
- 
+set nocount on
+
 declare @n int
 set @n =0
 declare @awal time
