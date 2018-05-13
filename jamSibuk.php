@@ -14,12 +14,12 @@
         <h2>Tabel Catatan Pengguna di Range 1 Jam</h2>
         <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> method="post">
         <div class="search-container">
-            <input type="text" placeholder="Search.." name="tglCatat">
+            <input type="date" data-date-format="YYYY MM DD" placeholder="Search.." name="tglCatat">
             <button type="submit">Tanggal<i class="fa fa-search"></i></button>
             
         </div>
         <div class="search-container" style="margin-top:1%;">
-            <input type="text" placeholder="Search.." name="jamCatat">
+            <input type="time" placeholder="Search.." name="jamCatat">
             <button type="submit">Jam<i class="fa fa-search"></i></button>
         </div>
         </form>
@@ -36,9 +36,13 @@
             </thead>
             <tbody>
                 <?php 
+               
                 $stmt;
                 $stmt1;
                     if($_SERVER["REQUEST_METHOD"]=="POST"){
+                        
+                        echo $_POST["tglCatat"];
+                        echo $_POST["jamCatat"];
 
                         if(isset($_POST["tglCatat"])){
                             if($_POST["tglCatat"]==null){
