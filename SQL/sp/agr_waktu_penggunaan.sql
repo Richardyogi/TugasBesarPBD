@@ -1,5 +1,4 @@
 alter procedure agr_waktu_penggunaan
-	@date date
 as
 
 set nocount on

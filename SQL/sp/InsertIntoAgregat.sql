@@ -7,3 +7,4 @@ as
 	exec jumlahPenggunaanKomputer 
 	exec agr_aktivitas_userSP
 
+	exec InsertIntoAgregat
