@@ -14,4 +14,4 @@ as
 	where 
 	@date = tanggal
 
-	--exec daftarPenggunaPerjamTGL '2018-05-11'
+	exec daftarPenggunaPerjamTGL '2018-05-11'
