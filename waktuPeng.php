@@ -13,7 +13,7 @@
     <div id="contentPage">
         <h2 class="text-center">LAPORAN</h2>
         <hr>
-        <H6>Tingkat Penggunaan Komputer</H6>
+        <H6>Tingkat Penggunaan Komputer 10 Teratas</H6>
         <hr>
         <div class="row">
             <div class="chart-container col-6" >
@@ -25,7 +25,7 @@
         </div>
         <br>
         <hr>
-        <H6>Tingkat Penggunaan Aplikasi</H6>
+        <H6>Tingkat Penggunaan Aplikasi 10 Teratas</H6>
         <hr>
         <div class="row">
             <div class="chart-container col-6" >
@@ -34,12 +34,12 @@
         </div>
         <br>
         <hr>
-        <H6>Tingkat Aktivitas User</H6>
+        <H6>Grafik Aktivitas Jam Sibuk Lab</H6>
         <hr>
         <div class="row">
             
             <div class="chart-container col-6" >
-                <canvas id="chartUser"></canvas>
+                <canvas id="chartJam"></canvas>
             </div>
             
         </div>
@@ -51,16 +51,21 @@
 
 </html>
 <script>
+//penggunaan komputer
 var dataKomputer = {
     labels: [
       <?php
-          $sql = "exec laporanJumlahPenggunaanKomputerTop5";
+          $sql = "exec laporanTop10 'komputer'";
           $rs = sqlsrv_query( $conn,$sql);
+          $idKomputer;
           $jumlahPenggunaan;
+          $durasi;
           $n=0;
           while( $row = sqlsrv_fetch_array( $rs, SQLSRV_FETCH_ASSOC) ) {
               echo $row["FK_Komputer"].',';
+              $idKomputer[$n]=$row["FK_Komputer"];
               $jumlahPenggunaan[$n]=$row["jumlah_penggunaan"];
+              $durasi[$n]=$row["durasi"];
               $n++;
           }
       ?>
@@ -81,7 +86,7 @@ var dataKomputer = {
           
       ],
     }]
-  };
+};
   
   var optionsKomputer = {
     maintainAspectRatio: true,
@@ -110,29 +115,114 @@ var dataKomputer = {
           },
           ticks: {
                 min:1,
-                stepSize: 1
+                stepSize: 50
             }
       }]
     }
   };
+  
   new Chart(document.getElementById("chartKomputer"),{
     type:'bar',
     options: optionsKomputer,
     data: dataKomputer
   });
 
-  var dataAplikasi = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+//durasi komputer
+var dataDurasiKomputer = {
+    labels: [
+      <?php
+          for($i=0; $i<sizeof($idKomputer);$i++){
+            echo $idKomputer[$i].",";
+          }
+      ?>
+    ],
     datasets: [{
-      label: "Data 5 Aplikasi dengan Jumlah Pemakaian Tertinggi",
+      label: "jumlah pengguna",
       backgroundColor: "rgba(255,99,132,0.2)",
       borderColor: "rgba(255,99,132,1)",
       borderWidth: 1,
       hoverBackgroundColor: "rgba(255,99,132,0.4)",
       hoverBorderColor: "rgba(255,99,132,1)",
-      data: [65, 59, 20, 81, 56, 55, 40],
+      data: [
+          <?php
+              for($i=0; $i<sizeof($durasi);$i++){
+                echo $durasi[$i].",";
+              }
+            ?>
+          
+      ],
     }]
+};
+  
+  var optionsDurasiKomputer = {
+    maintainAspectRatio: true,
+    scales: {
+      yAxes: [{
+        stacked: true,
+        gridLines: {
+          display: true,
+          color: "rgba(255,99,132,0.2)"
+        }
+      }],
+      xAxes: [{
+        gridLines: {
+          display: false
+        },
+        scaleLabel: {
+            display: true,
+            labelString: "ID Komputer"
+          }
+      }],
+      yAxes: [{
+        
+        scaleLabel: {
+            display: true,
+            labelString: "durasi (second)"
+          },
+          ticks: {
+                min:1,
+                stepSize: 300000
+            }
+      }]
+    }
   };
+  
+  new Chart(document.getElementById("chartDurasiKomputer"),{
+    type:'bar',
+    options: optionsDurasiKomputer,
+    data: dataDurasiKomputer
+  });
+
+var dataAplikasi = {
+  labels: [
+      <?php
+          $sql = "exec laporanTop10 'aplikasi'";
+          $rs = sqlsrv_query( $conn,$sql);
+          $n=0;
+          while( $row = sqlsrv_fetch_array( $rs, SQLSRV_FETCH_ASSOC) ) {
+              echo $row["FK_aplikasi"].',';
+              $jumlahPenggunaan[$n]=$row["jumlah_pengguna"];
+              $n++;
+          }
+      ?>
+    ],
+    datasets: [{
+      label: "jumlah pengguna",
+      backgroundColor: "rgba(255,99,132,0.2)",
+      borderColor: "rgba(255,99,132,1)",
+      borderWidth: 1,
+      hoverBackgroundColor: "rgba(255,99,132,0.4)",
+      hoverBorderColor: "rgba(255,99,132,1)",
+      data: [
+          <?php
+              for($i=0; $i<sizeof($jumlahPenggunaan);$i++){
+                echo $jumlahPenggunaan[$i].",";
+              }
+            ?>
+          
+      ],
+    }]
+};
   
   var optionsAplikasi = {
     maintainAspectRatio: true,
@@ -147,30 +237,64 @@ var dataKomputer = {
       xAxes: [{
         gridLines: {
           display: false
-        }
+        },
+        scaleLabel: {
+            display: true,
+            labelString: "ID Aplikasi"
+          }
+      }],
+      yAxes: [{
+        
+        scaleLabel: {
+            display: true,
+            labelString: "jumlah pengguna"
+          },
+          ticks: {
+                min:1,
+                stepSize: 10
+            }
       }]
     }
   };
   
-  Chart.Bar('chartAplikasi', {
+  new Chart(document.getElementById("chartAplikasi"),{
+    type:'bar',
     options: optionsAplikasi,
     data: dataAplikasi
   });
 
-  var dataUser = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+var dataJam = {
+  labels: [
+      <?php
+          $sql = "exec laporanTop10 'aplikasi'";
+          $rs = sqlsrv_query( $conn,$sql);
+          $n=0;
+          while( $row = sqlsrv_fetch_array( $rs, SQLSRV_FETCH_ASSOC) ) {
+              echo $row["FK_aplikasi"].',';
+              $jumlahPenggunaan[$n]=$row["jumlah_pengguna"];
+              $n++;
+          }
+      ?>
+    ],
     datasets: [{
-      label: "Data 5 User Paling Aktif",
+      label: "jumlah pengguna",
       backgroundColor: "rgba(255,99,132,0.2)",
       borderColor: "rgba(255,99,132,1)",
       borderWidth: 1,
       hoverBackgroundColor: "rgba(255,99,132,0.4)",
       hoverBorderColor: "rgba(255,99,132,1)",
-      data: [65, 59, 20, 81, 56, 55, 40],
+      data: [
+          <?php
+              for($i=0; $i<sizeof($jumlahPenggunaan);$i++){
+                echo $jumlahPenggunaan[$i].",";
+              }
+            ?>
+          
+      ],
     }]
-  };
-  
-  var optionsUser = {
+};
+    
+  var optionsAplikasi = {
     maintainAspectRatio: true,
     scales: {
       yAxes: [{
@@ -183,16 +307,31 @@ var dataKomputer = {
       xAxes: [{
         gridLines: {
           display: false
-        }
+        },
+        scaleLabel: {
+            display: true,
+            labelString: "ID Aplikasi"
+          }
+      }],
+      yAxes: [{
+        
+        scaleLabel: {
+            display: true,
+            labelString: "jumlah pengguna"
+          },
+          ticks: {
+                min:1,
+                stepSize: 10
+            }
       }]
     }
   };
   
-  Chart.Bar('chartUser', {
-    options: optionsUser,
-    data: dataUser
+  new Chart(document.getElementById("chartAplikasi"),{
+    type:'bar',
+    options: optionsAplikasi,
+    data: dataAplikasi
   });
+
   
-  
-  
-</script>
+</script>           

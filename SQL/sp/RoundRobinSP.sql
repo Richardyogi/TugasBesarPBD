@@ -1,7 +1,9 @@
-create procedure RoundRobinSP
+alter procedure RoundRobinSP
 	@n int,
 	@time time
 as
+
+set nocount on
 
 declare @curIDUser int
 declare @curIDKomputer int
@@ -128,9 +130,9 @@ update INDEX_ROUND_ROBIN
 set no_index = @curIndex
 where no_index = @tempIndex
 
-DECLARE @N TIME
-SET @N =CONVERT(TIME, CURRENT_TIMESTAMP)
-EXEC RoundRobinSP 500 , @N
+--DECLARE @N TIME
+--SET @N =CONVERT(TIME, CURRENT_TIMESTAMP)
+--EXEC RoundRobinSP 500 , @N
 
 ----select * from RoundRobin
 --select * from INDEX_ROUND_ROBIN

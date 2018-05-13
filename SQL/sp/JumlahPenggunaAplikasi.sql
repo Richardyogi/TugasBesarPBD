@@ -1,5 +1,7 @@
-create procedure jumlahPenggunaAplikasi
+alter procedure jumlahPenggunaAplikasi
 as
+
+set nocount on
 
 	declare @idAplikasi int
 	declare @date date

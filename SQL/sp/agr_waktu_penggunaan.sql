@@ -2,6 +2,8 @@ alter procedure agr_waktu_penggunaan
 	@date date
 as
 
+set nocount on
+
 declare @n int
 set @n =0
 declare @awal time

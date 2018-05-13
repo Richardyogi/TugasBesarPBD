@@ -28,7 +28,7 @@
                 $stmt1 = sqlsrv_query($conn, $sql);
                 sqlsrv_errors();
                 while( $row = sqlsrv_fetch_array( $stmt1, SQLSRV_FETCH_ASSOC) ) {
-                    echo $row["pengguna1"];
+                    echo "";
                 }  
                 echo '<script type="text/javascript">alert("data random berhasil dimasukkan ke round robin");</script>';
                 
@@ -77,7 +77,7 @@
                         $links      = ( isset( $_GET['links'] ) ) ? $_GET['links'] : 7;
                         $start     = ( isset( $_GET['start'] ) ) ? $_GET['start'] : 0;
                         $end         = ( isset( $_GET['end'] ) ) ? $_GET['end'] : 1000;
-                        $sql="select * from roundrobin";
+                        $sql="exec selectAll 'roundrobin'";
                         $Paginator  = new Paginator( $conn, $sql, $start, $end );
                     
                         $results    = $Paginator->getData(  $limit,$page, $start, $end );

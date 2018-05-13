@@ -13,7 +13,7 @@
     <div id="contentPage">
         <h2>Tabel Catatan Pengguna di Range 1 Jam</h2>
         <div class="search-container">
-            <input type="text" placeholder="Search.." name="search">
+            <input type="date" placeholder="Search.." name="search">
             <button type="submit"><i class="fa fa-search"></i></button>
         </div>
         <br>

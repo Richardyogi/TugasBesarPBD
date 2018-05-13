@@ -1,5 +1,7 @@
-create procedure jumlahPenggunaanKomputer
+alter procedure jumlahPenggunaanKomputer
 as
+
+set nocount on
 
  declare @idKomputer int
  declare @jumlahKomputer int
