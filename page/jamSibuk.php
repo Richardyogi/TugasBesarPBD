@@ -14,14 +14,13 @@
         <h2>Tabel Catatan Pengguna di Range 1 Jam</h2>
         <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> method="post">
         <div class="search-container">
-            <input type="date" data-date-format="YYYY MM DD" placeholder="Search.." name="tglCatat">
-            <button type="submit">Tanggal<i class="fa fa-search"></i></button>
+            <input type="date" data-date-format="YYYY MM DD" placeholder="Search.." name="search" class="form-inline" name="tglCatat">
+            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Tanggal</button>
             
         </div>
         <div class="search-container" style="margin-top:1%;">
-            <input type="time" placeholder="Search.." name="jamCatat">
-            <button type="submit">Jam<i class="fa fa-search"></i></button>
-        </div>
+            <input type="time" placeholder="Search.." name="search" class="form-inline" name="jamCatat">
+            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Jam</button>        </div>
         </form>
         <br>
         

@@ -15,8 +15,8 @@
     <span>Search berdasarkan id komputer:</span>
     <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> method="post">
         <div class="search-container">
-            <input type="number" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
+            <input type="number" placeholder="Search.." name="search" class="form-inline" id="searchBar">
+            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
         </div>
     </form>
     <br>

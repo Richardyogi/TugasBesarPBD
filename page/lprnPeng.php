@@ -13,9 +13,8 @@
         <h2>Laporan Pengguna</h2>
         <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> method="post">
         <div class="search-container">
-            <input type="number" placeholder="Search.." name="user">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </div>
+            <input type="number" placeholder="Search.." name="search" class="form-inline" name="user">
+            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>        </div>
         <br>
         <table class="table table-bordered table-striped ">
             <thead>
