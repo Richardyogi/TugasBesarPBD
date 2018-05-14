@@ -9,4 +9,4 @@ SET @query=CONCAT('select * from ',convert(nvarchar,@name))
 
 EXEC sp_executesql @query
 
-exec selectAll 'agr_penggunaan_komputer'
+--exec selectAll 'agr_penggunaan_komputer'
