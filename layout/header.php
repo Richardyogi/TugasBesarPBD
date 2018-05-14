@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm bg-dark  navbar-dark">
-        <a class="navbar-brand font-weight-heavy" href="index.php" style="color: #F08519;font-family: Calibri">Labkom
+        <a class="navbar-brand font-weight-heavy" href="../index.php" style="color: #F08519;font-family: Calibri">Labkom
             <span style="color: white;margin-left: -1.1%;margin-right: 1%;font-family: Calibri">Logs</span>
         </a>
 

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    include 'connection.php';
-    include 'phpScript.php';
+    include '../phpScript/connection.php';
+    include '../phpScript/phpScript.php';
 ?>
 
 <?php
@@ -50,7 +50,7 @@
 
 <body>
     <?php
-        include 'header.php';
+        include '../layout/header.php';
     ?>
     
     <div id="contentPage">

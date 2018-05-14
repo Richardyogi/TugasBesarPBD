@@ -1,6 +1,6 @@
 <?php
-    include 'connection.php';
-    include 'phpScript.php';
+    include '../phpScript/connection.php';
+    include '../phpScript/phpScript.php';
 ?>
 <?php
     $stmt1;
@@ -64,14 +64,14 @@
     <!--TODO: include header di setiap page seperti ini(ajon)-->
    <div class="bg">
    <?php
-        include 'header.php';
+        include '../layout/header.php';
     ?>
 
     <div id="contentPage">
         <h2>Round Robin Table</h2>
 
         <?php
-                        require_once 'paginator_class.php';
+                        require_once '../phpScript/paginator_class.php';
                         $limit      = ( isset( $_GET['limit'] ) ) ? $_GET['limit'] : 1000;
                         $page       = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 1;
                         $links      = ( isset( $_GET['links'] ) ) ? $_GET['links'] : 7;
