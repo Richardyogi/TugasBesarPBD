@@ -17,6 +17,11 @@ declare @tempTable table
 	jamAkhirTemp time
 )
 
+
+declare @date date
+set @date = convert(date,CURRENT_TIMESTAMP)
+
+
 insert into @tempTable
 select
 	tanggal, 
@@ -48,6 +53,7 @@ begin
 	set @akhir= DATEADD(hour,1,@akhir)
 	set @n=@n+1
 end
+
 
 --declare @k date
 --set @k= convert(date, CURRENT_TIMESTAMP)
