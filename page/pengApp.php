@@ -41,11 +41,11 @@
                      else{
                          $sql = 'exec laporanPenggunaApplikasi "' .$_POST["search"].'",null';
                          $stmt = sqlsrv_query($conn,$sql);
-         
+                        
                          if($stmt==false){
                              echo "Error in executing.\n";  
                              die( print_r( sqlsrv_errors(), true));  
-                         }
+                          }
                          else{
                              echo "<table class='table table-bordered table-striped'>";
                              echo "<thead>";
@@ -57,7 +57,7 @@
                              echo "</thead>";
                              echo "<tbody>";
                                  
-                                 echo $sql;
+                           
                                      while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
                                      echo "<tr><td>".
                                          $row["IdAplikasi"]."</td><td>".
@@ -69,7 +69,9 @@
                              echo "</table>";                       
                          }
                      }
-                 }else if(isset($_POST["searchById"])){
+                 }
+                 
+                 if(isset($_POST["searchById"])){
                     if($_POST["searchById"]==null){
                         echo '<script type="text/javascript">alert("Id Aplikasi harus diisi");</script>';
                     }
@@ -92,7 +94,7 @@
                             echo "</thead>";
                             echo "<tbody>";
                                 
-                                echo $sql;
+                              
                                     while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
                                     echo "<tr><td>".
                                         $row["IdAplikasi"]."</td><td>".
