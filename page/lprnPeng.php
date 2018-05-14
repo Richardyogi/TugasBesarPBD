@@ -13,9 +13,9 @@
         <h2>Laporan Pengguna</h2>
         <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> method="post">
         <div class="search-container">
-            <input type="text" placeholder="Search.." name="user">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </div>
+            <input type="number" placeholder="Search.." name="search" class="form-inline" name="user">
+            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>        </div>
+        <br>
         <table class="table table-bordered table-striped ">
             <thead>
                 <tr>
@@ -29,7 +29,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                
                     <!-- isi tabel -->
                     <?php
                         $stmt;
@@ -38,7 +38,7 @@
                                 echo '<script type="text/javascript">alert("Form pencaharian masi kosong");</script>';
                             }
                             else{
-                                $sql = 'exec laporanAktifitasUserUS'.$_POST["user"].'';
+                                $sql = 'exec laporanAktifitasUserUS '.$_POST["user"].'';
                                 $stmt = sqlsrv_query( $conn,$sql);
 
                                 if($stmt == false){
@@ -46,33 +46,38 @@
                                     die(print_r(sqlsrv_errors(), true));
                                 }
                                 else{
-                                    echo "<table class='table table-bordered table-striped'>";
-                                    echo "<thead>";
-                                        echo "<tr>";
-                                            echo "<th>ID User</th>";
-                                            echo "<th>ID Komputer</th>";
-                                            echo "<th>ID Aplikasi</th>";
-                                            echo "<th>Tanggal</th>";
-                                            echo "<th>Jam Awal</th>";
-                                            echo "<th>Jam Akhir</th>";
-                                        echo "</tr>";
-                                    echo "</thead>";
-                                    echo "<tbody>";
+                                   
                                     echo "<tr>";
                                         while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-                                        echo "<tr><td>".
+                                       
+                                            echo "<tr><td>".
                                             $row["FK_User"]."</td><td>".
                                             $row["FK_Komputer"]."</td><td>".
                                             $row["FK_Aplikasi"]."</td><td>".
-                                            $row["tanggal"]."</td></tr>";
-                                            $row["waktu_mulai"]."</td><td>".
-                                            $row["waktu_akhir"]."</td></tr>";
+                                            $row["tanggal"]->format('d-m-Y')."</td><td>".
+                                            $row["waktu_mulai"]->format('H:i:s')."</td><td>".
+                                            $row["waktu_akhir"]->format('H:i:s')."</td></tr>";
                                         } 
                                     echo "</tr>";
-                                echo "</tbody>";
-                                echo "</table>";
+                               
                                 }
                             }
+                        }else{
+                            $sql1 = "exec selectAll 'agr_aktivitas_user'";
+                            $stmt1 = sqlsrv_query($conn,$sql1);
+
+                                           while( $row = sqlsrv_fetch_array( $stmt1, SQLSRV_FETCH_ASSOC) ) {
+                                                echo "<tr><td>".
+                                                $row["FK_User"]."</td><td>".
+                                                $row["FK_Komputer"]."</td><td>".
+                                                $row["FK_Aplikasi"]."</td><td>".
+                                                $row["tanggal"]->format('d-m-Y')."</td><td>".
+                                                $row["waktu_mulai"]->format('H:i:s')."</td><td>".
+                                                $row["waktu_akhir"]->format('H:i:s')."</td></tr>";
+                                            }
+                                    
+                               
+                            
                         }
                         
 
@@ -88,7 +93,7 @@
                     //     }
                     ?>
                    
-                </tr>
+                
 
             </tbody>
         </table>

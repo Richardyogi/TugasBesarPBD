@@ -17,9 +17,8 @@
         <span>Search berdasarkan nama aplikasi:</span>
         <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> method="post">
             <div class="search-container">
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </div>
+                <input type="text" placeholder="Search.." name="search" class="form-inline" name="search">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>            </div>
         </form>
         <br>
         <span>Search berdasarkan id aplikasi:</span>
@@ -41,11 +40,11 @@
                      else{
                          $sql = 'exec laporanPenggunaApplikasi "' .$_POST["search"].'",null';
                          $stmt = sqlsrv_query($conn,$sql);
-         
+                        
                          if($stmt==false){
                              echo "Error in executing.\n";  
                              die( print_r( sqlsrv_errors(), true));  
-                         }
+                          }
                          else{
                              echo "<table class='table table-bordered table-striped'>";
                              echo "<thead>";
@@ -57,7 +56,7 @@
                              echo "</thead>";
                              echo "<tbody>";
                                  
-                                 echo $sql;
+                           
                                      while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
                                      echo "<tr><td>".
                                          $row["IdAplikasi"]."</td><td>".
@@ -69,7 +68,9 @@
                              echo "</table>";                       
                          }
                      }
-                 }else if(isset($_POST["searchById"])){
+                 }
+                 
+                 if(isset($_POST["searchById"])){
                     if($_POST["searchById"]==null){
                         echo '<script type="text/javascript">alert("Id Aplikasi harus diisi");</script>';
                     }
@@ -92,7 +93,7 @@
                             echo "</thead>";
                             echo "<tbody>";
                                 
-                                echo $sql;
+                              
                                     while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
                                     echo "<tr><td>".
                                         $row["IdAplikasi"]."</td><td>".
