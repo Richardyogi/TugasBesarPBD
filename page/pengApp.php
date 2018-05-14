@@ -22,6 +22,14 @@
             </div>
         </form>
         <br>
+        <span>Search berdasarkan id aplikasi:</span>
+        <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> method="post">
+            <div class="search-container">
+                <input type="number" placeholder="Search.." name="searchById">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
+        <br>
         <?php
              $stmt;
              $stmt1;
@@ -31,7 +39,7 @@
                          echo '<script type="text/javascript">alert("Nama Aplikasi harus diisi");</script>';
                      }
                      else{
-                         $sql = 'exec laporanPenggunaApplikasi "' .$_POST["search"].'" ';
+                         $sql = 'exec laporanPenggunaApplikasi "' .$_POST["search"].'",null';
                          $stmt = sqlsrv_query($conn,$sql);
          
                          if($stmt==false){
@@ -44,22 +52,58 @@
                                  echo "<tr>";
                                      echo "<th>Id</th>";
                                      echo "<th>Nama Aplikasi</th>";
-                                     echo "<th>Jumlah Penggunaan </th>";
+                                     echo "<th>Jumlah Penggunaan</th>";
                                  echo "</tr>";
                              echo "</thead>";
                              echo "<tbody>";
-                                 echo "<tr>";
+                                 
+                                 echo $sql;
                                      while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
                                      echo "<tr><td>".
                                          $row["IdAplikasi"]."</td><td>".
                                          $row["NamaAplikasi"]."</td><td>".
                                          $row["JumlahPengguna"]."</td></tr>";
                                      } 
-                                 echo "</tr>";
+                                 
                              echo "</tbody>";
                              echo "</table>";                       
                          }
                      }
+                 }else if(isset($_POST["searchById"])){
+                    if($_POST["searchById"]==null){
+                        echo '<script type="text/javascript">alert("Id Aplikasi harus diisi");</script>';
+                    }
+                    else{
+                        $sql = 'exec laporanPenggunaApplikasi null, '.$_POST["searchById"];
+                        $stmt = sqlsrv_query($conn,$sql);
+        
+                        if($stmt==false){
+                            echo "Error in executing.\n";  
+                            die( print_r( sqlsrv_errors(), true));  
+                        }
+                        else{
+                            echo "<table class='table table-bordered table-striped'>";
+                            echo "<thead>";
+                                echo "<tr>";
+                                    echo "<th>Id</th>";
+                                    echo "<th>Nama Aplikasi</th>";
+                                    echo "<th>Jumlah Penggunaan</th>";
+                                echo "</tr>";
+                            echo "</thead>";
+                            echo "<tbody>";
+                                
+                                echo $sql;
+                                    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+                                    echo "<tr><td>".
+                                        $row["IdAplikasi"]."</td><td>".
+                                        $row["NamaAplikasi"]."</td><td>".
+                                        $row["JumlahPengguna"]."</td></tr>";
+                                    } 
+                                
+                            echo "</tbody>";
+                            echo "</table>";                       
+                        }
+                    }
                  }
              }
              else{
@@ -75,14 +119,14 @@
                      echo "</tr>";
                  echo "</thead>";
                  echo "<tbody>";
-                     echo "<tr>";
+                     
                           while( $row = sqlsrv_fetch_array( $stmt1, SQLSRV_FETCH_ASSOC) ) {
                              echo "<tr><td>".
                              $row["FK_Aplikasi"]."</td><td>".
                              $row["NamaAplikasi"]."</td><td>".
-                             $row["jumlah_pengguna"]."</td><td></tr>";
+                             $row["jumlah_pengguna"]."</td></tr>";
                          }
-                     echo "</tr>";
+                
                  echo "</tbody>";
                  echo "</table>";  
              }
