@@ -1,6 +1,10 @@
 <?php
-    $serverName = "DESKTOP-HKGSIC4\SQLEXPRESS01"; //ubah nama server sesuai di komputer masing"
-
+    $serverName = "AUDITAMAPI-PC\SQLEXPRESS"; //ubah nama server sesuai di komputer masing"
+    
+    //server ajon AUDITAMAPI-PC\SQLEXPRESS
+    //server icad DESKTOP-HKGSIC4\SQLEXPRESS01
+    
+    
     // Since UID and PWD are not specified in the $connectionInfo array,
     // The connection will be attempted using Windows Authentication.
     $connectionInfo = array( "Database"=>"master");
