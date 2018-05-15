@@ -28,8 +28,8 @@
         
         </form>
         <br>
-        
-        <table class="table table-bordered table-striped">
+        <div class="row">
+        <table class="table table-bordered table-striped  offset-2 col-8 ">
             <thead>
                 <tr>
                     <th>Tanggal</th>
@@ -38,6 +38,7 @@
                     <th>Jumlah Penggunaan</th>
                 </tr>
             </thead>
+        </div>
             <tbody>
                 <?php 
                

@@ -2,7 +2,8 @@
 body, html {
   background-image: url("background.jpg");
   background-size: 100%; 
-  background-repeat: no-repeat, repeat; 
+  background-repeat: no-repeat,repeat-y; 
+  background-attachment: fixed,scroll;
   background-color: #cccccc00;  
 }
 
