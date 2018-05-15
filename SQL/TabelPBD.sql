@@ -53,16 +53,3 @@ Create Table agr_aktivitas_user(
   waktu_mulai time, 
   waktu_akhir time 
 )
-
-insert into agr_penggunaan_aplikasi(FK_Aplikasi)
-select id_aplikasi from aplikasi
-
-update agr_penggunaan_aplikasi
-set jumlah_pengguna=0
-
-insert into agr_penggunaan_komputer(FK_Komputer)
-select id_komputer from komputer
-
-
-update agr_penggunaan_komputer
-set jumlah_penggunaan=0, durasi=0
