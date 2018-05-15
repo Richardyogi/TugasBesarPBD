@@ -58,11 +58,43 @@
                     <?php
                         $stmt;
                         if(isset($_POST["user"])){
-                            if($_POST["user"]==null){
-                                echo '<script type="text/javascript">alert("Form pencaharian masi kosong");</script>';
+                            if($_POST["user"]==null && $_POST["komputer"]==null && $_POST["aplikasi"]==null && $_POST["tanggal"]==null && $_POST["jam"]==null){
+                                echo '<script type="text/javascript">alert("Form pencarian harus diisi!!");</script>';
                             }
                             else{
-                                $sql = 'exec laporanAktifitasUserUS '.$_POST["user"].'';
+                                $sql =  'exec laporanAktifitasUser ';
+                                    if($_POST["user"]!=null){
+                                        $sql .= $_POST["user"].",";
+                                    }else{
+                                        $sql .="null,";
+                                    }
+
+                                    if($_POST["komputer"]!=null){
+                                        $sql .= $_POST["komputer"].",";
+                                    }else{
+                                        $sql .="null,";
+                                    }
+
+                                    if($_POST["aplikasi"]!=null){
+                                        $sql .= $_POST["aplikasi"].",";
+                                    }else{
+                                        $sql .="null,";
+                                    }
+
+                                    if($_POST["tanggal"]!=null){
+                                        $sql .= $_POST["tanggal"].",";
+                                    }else{
+                                        $sql .="null,";
+                                    }
+
+                                    if($_POST["jam"]!=null){
+                                        $sql .= $_POST["jam"].",";
+                                    }else{
+                                        $sql .="null,";
+                                    }
+                                   
+                                $sql = substr($sql,0,strlen($sql)-1);
+                                
                                 $stmt = sqlsrv_query( $conn,$sql);
 
                                 if($stmt == false){
@@ -70,10 +102,10 @@
                                     die(print_r(sqlsrv_errors(), true));
                                 }
                                 else{
-                                   
                                     echo "<tr>";
+                                        
                                         while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-                                       
+                                         
                                             echo "<tr><td>".
                                             $row["FK_User"]."</td><td>".
                                             $row["FK_Komputer"]."</td><td>".
@@ -83,7 +115,6 @@
                                             $row["waktu_akhir"]->format('H:i:s')."</td></tr>";
                                         } 
                                     echo "</tr>";
-                               
                                 }
                             }
                         }else{
