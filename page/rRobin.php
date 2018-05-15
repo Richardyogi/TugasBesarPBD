@@ -24,7 +24,7 @@
                     $sql.= ' set @n = null;';
                     $sql.= ' exec RoundRobinSP '.$_POST["jumlahUser"].', "08:00:00"';
                 }
-                
+                //echo $sql;
                 $stmt1 = sqlsrv_query($conn, $sql);
                 sqlsrv_errors();
                 while( $row = sqlsrv_fetch_array( $stmt1, SQLSRV_FETCH_ASSOC) ) {

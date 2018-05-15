@@ -51664,3 +51664,6 @@ select id_komputer from komputer
 
 update agr_penggunaan_komputer
 set jumlah_penggunaan=0, durasi=0
+
+insert into index_round_robin
+select 1
