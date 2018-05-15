@@ -5,26 +5,25 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-create procedure [dbo].[daftarPenggunaPerjam]
-	@date varchar(10),
+alter procedure [dbo].[daftarPenggunaPerjam]
+	@date date,
 	@time time
 as
-	declare @query varchar(200)
+	declare @query nvarchar(500)
 	set @query ='select * from agr_jumlah_pengguna_per_jam where '
+
 	if(@date is not null)
 	begin
-		declare @n date 
-		set @n= CONVERT(datetime, @date, 120) 
-		set @query= @query+concat('tanggal= ',convert(nvarchar,@n),',')
+		set @query= concat(@query,'tanggal=''',convert(nvarchar,@date),''',')
 	end
 	if(@time is not null)
 	begin
-		set @query= @query+concat('start_time<=''',convert(nvarchar,@time),''' and end_time>=',convert(nvarchar,@time),',')
+		set @query=concat( @query,'start_time<=''',convert(nvarchar,@time),''' and end_time>=''',convert(nvarchar,@time),''',')
 	end
-	
-	set @query=SUBSTRING(@query, 1, len(@query)-1)
-
 	select @query
+	set @query=SUBSTRING(@query, 1, len(@query)-1)
 	EXEC sp_executesql @query
 
-	--exec daftarPenggunaPerjamTGL '2018-05-07',null
+	--exec daftarPenggunaPerjam '2018-05-07',null
+
+	exec daftarPenggunaPerjam null,'09:00'

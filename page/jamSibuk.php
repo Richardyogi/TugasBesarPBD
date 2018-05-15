@@ -61,7 +61,7 @@
                                 }else if($_POST["jamCatat"]!=null && $_POST["tglCatat"]!=null){
                                     $sql = "exec daftarPenggunaPerjam'".$_POST["tglCatat"]."','".$_POST["jamCatat"]."'";
                                 }
-                                echo $sql;
+                                //echo $sql;
                                 $stmt = sqlsrv_query($conn,$sql);
                             
                                 if($stmt == false){
