@@ -328,7 +328,13 @@ var dataJam = {
  
 
 var dataJam = {
-  labels: ["1","2","3","3"],
+  labels: [
+    <?php
+        $sql = "exec selectAll 'dbo.tabelJmlPengguna()'";
+        $rs = sqlsrv_query( $conn,$sql);
+        
+    ?>  
+  ],
     datasets: [{
       label: "Jam Sibuk (DMY)",
       backgroundColor: "rgba(255,99,132,0.2)",
