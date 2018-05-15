@@ -261,74 +261,21 @@ var dataAplikasi = {
     options: optionsAplikasi,
     data: dataAplikasi
   });
-
-var dataJam = {
-  labels: [
-      <?php
-          $sql = "exec laporanTop10 'aplikasi'";
-          $rs = sqlsrv_query( $conn,$sql);
-          $n=0;
-          while( $row = sqlsrv_fetch_array( $rs, SQLSRV_FETCH_ASSOC) ) {
-              echo $row["FK_aplikasi"].',';
-              $jumlahPenggunaan[$n]=$row["jumlah_pengguna"];
-              $n++;
-          }
-      ?>
-    ],
-    datasets: [{
-      label: "jumlah pengguna",
-      backgroundColor: "rgba(255,99,132,0.2)",
-      borderColor: "rgba(255,99,132,1)",
-      borderWidth: 1,
-      hoverBackgroundColor: "rgba(255,99,132,0.4)",
-      hoverBorderColor: "rgba(255,99,132,1)",
-      data: [
-            <?php
-              for($i=0; $i<sizeof($jumlahPenggunaan);$i++){
-                echo $jumlahPenggunaan[$i].",";
-              }
-            ?>
-          
-      ],
-    }]
-};
-    
-  var optionsAplikasi = {
-    maintainAspectRatio: true,
-    scales: {
-      yAxes: [{
-        stacked: true,
-        gridLines: {
-          display: true,
-          color: "rgba(255,99,132,0.2)"
-        }
-      }],
-      xAxes: [{
-        gridLines: {
-          display: false
-        },
-        scaleLabel: {
-            display: true,
-            labelString: "ID Aplikasi"
-          }
-      }],
-      yAxes: [{
-        
-        scaleLabel: {
-            display: true,
-            labelString: "jumlah pengguna"
-          },
-          ticks: {
-                min:1,
-                stepSize: 10
-            }
-      }]
-    }
-  };
  
 
-var dataJam = {
-  labels: ["1","2","3","3"],
+var dataJamSibuk = {
+  labels: [
+      <?php
+        $sql = "exec selectAll 'dbo.tabelJmlPengguna()'";
+        $rs = sqlsrv_query( $conn,$sql);
+        $n=0;
+        while( $row = sqlsrv_fetch_array( $rs, SQLSRV_FETCH_ASSOC) ) {
+            echo $row["start_time"].','.$row["end_time"];
+            $jumlahPenggunaan[$n]=$row["jumlah_pengguna"];
+            $n++;
+        }
+      ?>
+  ],
     datasets: [{
       label: "Jam Sibuk (DMY)",
       backgroundColor: "rgba(255,99,132,0.2)",
@@ -336,7 +283,13 @@ var dataJam = {
       borderWidth: 1,
       hoverBackgroundColor: "rgba(255,99,132,0.4)",
       hoverBorderColor: "rgba(255,99,132,1)",
-      data: [2,5,8,8],
+      data: [
+        <?php
+              for($i=0; $i<sizeof($jumlahPenggunaan);$i++){
+                echo $jumlahPenggunaan[$i].",";
+              }
+        ?>
+      ],
     }]
 };
     
@@ -356,14 +309,14 @@ var dataJam = {
         },
         scaleLabel: {
             display: true,
-            labelString: "dsjsdlj"
+            labelString: "Jam Pengguna"
           }
       }],
       yAxes: [{
         
         scaleLabel: {
             display: true,
-            labelString: "jumlah pengguna"
+            labelString: "Jumlah pengguna"
           },
           ticks: {
                 min:1,
@@ -375,7 +328,7 @@ var dataJam = {
   new Chart(document.getElementById("chartJam"),{
     type:'line',
     options: optionsJam,
-    data: dataJam
+    data: dataJamSibuk
   });
 
   
