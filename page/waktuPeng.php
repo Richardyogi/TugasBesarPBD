@@ -28,7 +28,7 @@
         <H6>Tingkat Penggunaan Aplikasi 10 Teratas</H6>
         <hr>
         <div class="row">
-            <div class="chart-container col-6" >
+            <div class="chart-container offset-1 col-10" >
                 <canvas id="chartAplikasi"></canvas>
             </div>
         </div>
@@ -38,7 +38,7 @@
         <hr>
         <div class="row">
             
-            <div class="chart-container col-6" >
+            <div class="chart-container offset-1 col-10" >
                 <canvas id="chartJam"></canvas>
             </div>
             
@@ -136,7 +136,7 @@ var dataDurasiKomputer = {
       ?>
     ],
     datasets: [{
-      label: "jumlah pengguna",
+      label: "durasi (second)",
       backgroundColor: "rgba(255,99,132,0.2)",
       borderColor: "rgba(255,99,132,1)",
       borderWidth: 1,
@@ -277,7 +277,7 @@ var dataJamSibuk = {
       ?>
   ],
     datasets: [{
-      label: "Jam Sibuk (DMY)",
+      label: "Jam Sibuk",
       backgroundColor: "rgba(255,99,132,0.2)",
       borderColor: "rgba(255,99,132,1)",
       borderWidth: 1,
@@ -309,7 +309,7 @@ var dataJamSibuk = {
         },
         scaleLabel: {
             display: true,
-            labelString: "Jam Pengguna"
+            labelString: "Jam"
           }
       }],
       yAxes: [{

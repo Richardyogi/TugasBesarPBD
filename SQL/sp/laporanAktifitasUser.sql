@@ -31,17 +31,23 @@ begin
 end
 if(@parDate is not null)
 begin 
-	set @query=concat(@query,'tanggal=', convert(nvarchar,@parDate),' and ')
+	set @query=concat(@query,'tanggal=''', convert(nvarchar,@parDate),''' and ')
 end
 if(@parTime is not null)
 begin 
-	set @query=concat(@query,'=', convert(nvarchar,@parTime),' and ')
+	set @query=concat(@query,'waktu_mulai<=''', convert(nvarchar,@parTime),'''and waktu_akhir>=''', convert(nvarchar,@parTime),''' and ')
 end
 
 set @query=SUBSTRING(@query,1,len(@query)-3)
- select @query
+
 EXEC sp_executesql @query
 
-	--exec laporanAktifitasUser 1,2, null, null, null
+--exec laporanAktifitasUser null,null,null,null,'09:00'
+--exec laporanAktifitasUser 9,null,null,null,null
+
+--exec selectAll 'dbo.tabelJmlPengguna()'
+
+
+--select * from dbo.tabelJmlPengguna()
 
 

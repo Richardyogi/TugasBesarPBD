@@ -77,24 +77,26 @@
 
                                     if($_POST["aplikasi"]!=null){
                                         $sql .= $_POST["aplikasi"].",";
+                                        
                                     }else{
                                         $sql .="null,";
                                     }
 
                                     if($_POST["tanggal"]!=null){
-                                        $sql .= $_POST["tanggal"].",";
+                                        $sql .= "'".$_POST["tanggal"]."',";
+                                       // echo $sql;
                                     }else{
                                         $sql .="null,";
                                     }
 
                                     if($_POST["jam"]!=null){
-                                        $sql .= $_POST["jam"].",";
+                                        $sql .= "'".$_POST["jam"]."',";
                                     }else{
                                         $sql .="null,";
                                     }
                                    
                                 $sql = substr($sql,0,strlen($sql)-1);
-                                
+                                echo $sql;
                                 $stmt = sqlsrv_query( $conn,$sql);
 
                                 if($stmt == false){
