@@ -320,7 +320,7 @@ var dataJamSibuk = {
           },
           ticks: {
                 min:1,
-                stepSize: 10
+                stepSize: 500
             }
       }]
     }
