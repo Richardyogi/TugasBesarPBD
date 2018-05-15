@@ -265,15 +265,15 @@ var dataAplikasi = {
 
 var dataJamSibuk = {
   labels: [
-      <?php
-        $sql = "exec selectAll 'dbo.tabelJmlPengguna()'";
-        $rs = sqlsrv_query( $conn,$sql);
-        $n=0;
-        while( $row = sqlsrv_fetch_array( $rs, SQLSRV_FETCH_ASSOC) ) {
-            echo $row["start_time"].','.$row["end_time"];
-            $jumlahPenggunaan[$n]=$row["jumlah_pengguna"];
-            $n++;
-        }
+    <?php
+          $sql = "SELECT * from dbo.tabelJmlPengguna()";
+          $rs = sqlsrv_query( $conn,$sql);
+          $n=0;
+          while( $row = sqlsrv_fetch_array( $rs, SQLSRV_FETCH_ASSOC) ) {
+              echo "'".$row["start_time"]->format('H:i:s')."',";
+              $jumlahPenggunaan[$n]=$row["jumlah_pengguna"];
+              $n++;
+          }
       ?>
   ],
     datasets: [{
