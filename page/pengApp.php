@@ -40,7 +40,7 @@
                          echo '<script type="text/javascript">alert("Nama Aplikasi harus diisi");</script>';
                      }
                      else{
-                         $sql = 'exec laporanPenggunaApplikasi "' .$_POST["search"].'",null';
+                         $sql = 'exec laporanPenggunaAplikasi "' .$_POST["search"].'",null';
                          $stmt = sqlsrv_query($conn,$sql);
                         
                          if($stmt==false){
@@ -77,7 +77,7 @@
                         echo '<script type="text/javascript">alert("Id Aplikasi harus diisi");</script>';
                     }
                     else{
-                        $sql = 'exec laporanPenggunaApplikasi null, '.$_POST["searchById"];
+                        $sql = 'exec laporanPenggunaAplikasi null, '.$_POST["searchById"];
                         $stmt = sqlsrv_query($conn,$sql);
         
                         if($stmt==false){
@@ -110,7 +110,7 @@
                  }
              }
              else{
-                 $sql1 = "SELECT * from agr_penggunaan_aplikasi join aplikasi on agr_penggunaan_aplikasi.FK_Aplikasi=id_aplikasi";
+                 $sql1 = "exec laporanPenggunaAplikasi null, null";
                  $stmt1 = sqlsrv_query($conn,$sql1);
      
                  echo "<table class='table table-bordered table-striped  offset-2 col-8 '>";
@@ -125,9 +125,9 @@
                      
                           while( $row = sqlsrv_fetch_array( $stmt1, SQLSRV_FETCH_ASSOC) ) {
                              echo "<tr><td>".
-                             $row["FK_Aplikasi"]."</td><td>".
+                             $row["IdAplikasi"]."</td><td>".
                              $row["NamaAplikasi"]."</td><td>".
-                             $row["jumlah_pengguna"]."</td></tr>";
+                             $row["JumlahPengguna"]."</td></tr>";
                          }
                 
                  echo "</tbody>";

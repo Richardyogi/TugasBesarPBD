@@ -1,5 +1,0 @@
-alter procedure laporanPenggunaanKomputer
-as
-	select FK_Komputer,jumlah_penggunaan from agr_penggunaan_komputer
- 
- exec laporanPenggunaanKomputer

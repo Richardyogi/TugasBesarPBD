@@ -5,7 +5,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-alter procedure [dbo].[daftarPenggunaPerjamTGL]
+create procedure [dbo].[daftarPenggunaPerjam]
 	@date varchar(10),
 	@time time
 as
@@ -27,4 +27,4 @@ as
 	select @query
 	EXEC sp_executesql @query
 
-	exec daftarPenggunaPerjamTGL '2018-05-07',null
+	--exec daftarPenggunaPerjamTGL '2018-05-07',null
