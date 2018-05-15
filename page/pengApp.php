@@ -15,20 +15,22 @@
         <h2>Daftar Penggunaan Aplikasi</h2>
         <br>
         <span>Search berdasarkan nama aplikasi:</span>
-        <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> method="post">
-            <div class="search-container">
-                <input type="text" placeholder="Search.." name="search" class="form-inline" name="search">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>            </div>
-        </form>
-        <br>
-        <span>Search berdasarkan id aplikasi:</span>
-        <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> method="post">
-            <div class="search-container">
-                <input type="number" placeholder="Search.." name="searchById">
-                <button type="submit"><i class="fa fa-search"></i></button>
+        <form class="row" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> method="post">
+            <div class="form-group col-4">
+                <input type="text" placeholder="Search.." name="search" class="form-control">
+                <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-search"></i> Search</button>            
             </div>
         </form>
         <br>
+        <span>Search berdasarkan id aplikasi:</span>
+        <form class="row" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> method="post">
+            <div class="form-group col-4">
+                <input type="number" placeholder="Search.." name="searchById"class="form-control">
+                <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-search"></i>Search</button>
+            </div>
+        </form>
+        <br>
+        <div class="row">
         <?php
              $stmt;
              $stmt1;
@@ -46,7 +48,7 @@
                              die( print_r( sqlsrv_errors(), true));  
                           }
                          else{
-                             echo "<table class='table table-bordered table-striped'>";
+                             echo "<table class='table table-bordered table-striped  '>";
                              echo "<thead>";
                                  echo "<tr>";
                                      echo "<th>Id</th>";
@@ -111,7 +113,7 @@
                  $sql1 = "SELECT * from agr_penggunaan_aplikasi join aplikasi on agr_penggunaan_aplikasi.FK_Aplikasi=id_aplikasi";
                  $stmt1 = sqlsrv_query($conn,$sql1);
      
-                 echo "<table class='table table-bordered table-striped'>";
+                 echo "<table class='table table-bordered table-striped  offset-2 col-8 '>";
                  echo "<thead>";
                      echo "<tr>";
                      echo "<th>Id</th>";
@@ -132,7 +134,7 @@
                  echo "</table>";  
              }
         ?>
-     
+        </div>
     </div>
 
 </body>

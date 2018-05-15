@@ -40,7 +40,7 @@
         
 
      
-        <table class="table table-bordered table-striped ">
+        <table class="table table-bordered table-striped offset-2 col-8 " style="width:-1000%   !important" >
             <thead>
                 <tr>
                     <th>ID User</th>
