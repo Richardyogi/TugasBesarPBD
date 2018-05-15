@@ -14,16 +14,18 @@ as
 
 	if(@date is not null)
 	begin
-		set @query= concat(@query,'tanggal=''',convert(nvarchar,@date),''',')
+		set @query= concat(@query,'tanggal=''',convert(nvarchar,@date),''' and ')
 	end
 	if(@time is not null)
 	begin
-		set @query=concat( @query,'start_time<=''',convert(nvarchar,@time),''' and end_time>=''',convert(nvarchar,@time),''',')
+		set @query=concat( @query,'start_time<=''',convert(nvarchar,@time),''' and end_time>=''',convert(nvarchar,@time),''' and ')
 	end
-	select @query
-	set @query=SUBSTRING(@query, 1, len(@query)-1)
+	
+	set @query=SUBSTRING(@query, 1, len(@query)-3)
 	EXEC sp_executesql @query
 
 	--exec daftarPenggunaPerjam '2018-05-07',null
 
-	exec daftarPenggunaPerjam null,'09:00'
+	--exec daftarPenggunaPerjam null,'09:00'
+
+	--exec daftarPenggunaPerjam '2018-05-07','08:00'
