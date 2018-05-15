@@ -43,8 +43,7 @@
             </div>
             
         </div>
-        
-    
+       
     </div>
 
 </body>
@@ -284,7 +283,7 @@ var dataJam = {
       hoverBackgroundColor: "rgba(255,99,132,0.4)",
       hoverBorderColor: "rgba(255,99,132,1)",
       data: [
-          <?php
+            <?php
               for($i=0; $i<sizeof($jumlahPenggunaan);$i++){
                 echo $jumlahPenggunaan[$i].",";
               }
@@ -326,11 +325,57 @@ var dataJam = {
       }]
     }
   };
-  
-  new Chart(document.getElementById("chartAplikasi"),{
-    type:'bar',
-    options: optionsAplikasi,
-    data: dataAplikasi
+ 
+
+var dataJam = {
+  labels: ["1","2","3","3"],
+    datasets: [{
+      label: "Jam Sibuk (DMY)",
+      backgroundColor: "rgba(255,99,132,0.2)",
+      borderColor: "rgba(255,99,132,1)",
+      borderWidth: 1,
+      hoverBackgroundColor: "rgba(255,99,132,0.4)",
+      hoverBorderColor: "rgba(255,99,132,1)",
+      data: [2,5,8,8],
+    }]
+};
+    
+  var optionsJam = {
+    maintainAspectRatio: true,
+    scales: {
+      yAxes: [{
+        stacked: true,
+        gridLines: {
+          display: true,
+          color: "rgba(255,99,132,0.2)"
+        }
+      }],
+      xAxes: [{
+        gridLines: {
+          display: false
+        },
+        scaleLabel: {
+            display: true,
+            labelString: "dsjsdlj"
+          }
+      }],
+      yAxes: [{
+        
+        scaleLabel: {
+            display: true,
+            labelString: "jumlah pengguna"
+          },
+          ticks: {
+                min:1,
+                stepSize: 10
+            }
+      }]
+    }
+  };
+  new Chart(document.getElementById("chartJam"),{
+    type:'line',
+    options: optionsJam,
+    data: dataJam
   });
 
   
