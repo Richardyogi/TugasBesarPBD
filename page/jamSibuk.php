@@ -12,16 +12,20 @@
 
     <div id="contentPage">
         <h2>Tabel Catatan Pengguna di Range 1 Jam</h2>
-        <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> method="post">
-        <div class="search-container">
-            <input type="date" data-date-format="YYYY MM DD" placeholder="Search.." name="tglCatat">
-            <button type="submit">Tanggal<i class="fa fa-search"></i></button>
+
+        <span>cari berdasarkan tanggal dan kisaran waktu yang diinginkan (salah satu boleh dikosongkan):</span><br>
+        <form  class="row" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> method="post">
             
-        </div>
-        <div class="search-container" style="margin-top:1%;">
-            <input type="time" placeholder="Search.." name="jamCatat">
-            <button type="submit">Jam<i class="fa fa-search"></i></button>
-        </div>
+                <div class="form-group col-4">
+                    <input type="date" class="form-control" placeholder="Masukkan tanggal" name="tglCatat"><br>
+                </div>
+                <div class="form-group col-4">
+                    <input type="time" class="form-control" placeholder="Masukkan jam" name="jamCatat"><br>
+                </div>
+       
+                <br>
+                    <button type="submit"class="btn btn-primary" style="max-height:35px;">Search <i class="fa fa-search"></i></button>
+        
         </form>
         <br>
         
@@ -41,112 +45,49 @@
                 $stmt1;
                     if($_SERVER["REQUEST_METHOD"]=="POST"){
                         
-                        echo $_POST["tglCatat"];
-                        echo $_POST["jamCatat"];
+                        // echo $_POST["tglCatat"];
+                        // echo $_POST["jamCatat"];
 
-                        if(isset($_POST["tglCatat"])){
-                            if($_POST["tglCatat"]==null){
-                                echo '<script type="text/javascript">alert("pencaharian tanggal harus diisi");</script>';
+                        if(isset($_POST["tglCatat"]) && isset($_POST["jamCatat"])){
+                            if($_POST["tglCatat"]==null && $_POST["jamCatat"]==null){
+                                echo '<script type="text/javascript">alert("Salah satu form harus diisi terlebih dahulu!");</script>';
                             }
                             else{
-                                $sql = 'exec daftarPenggunaPerjamTGL '. $_POST["tglCatat"].'';
+                                if($_POST["tglCatat"]!=null && $_POST["jamCatat"]==null){
+                                    $sql = "exec daftarPenggunaPerjam '".$_POST["tglCatat"]."',null";
+                                }else if($_POST["jamCatat"]!=null && $_POST["tglCatat"]==null){
+                                    $sql = "exec daftarPenggunaPerjam null,'".$_POST["jamCatat"]."'";
+                                }else if($_POST["jamCatat"]!=null && $_POST["tglCatat"]!=null){
+                                    $sql = "exec daftarPenggunaPerjam'".$_POST["tglCatat"]."','".$_POST["jamCatat"]."'";
+                                }
+                                
                                 $stmt = sqlsrv_query($conn,$sql);
-                                
+                            
                                 if($stmt == false){
                                     echo "Error exec.\n";
                                     die(print_r(sqlsrv_errors(),true));
                                 }
-                                else{
-                                    echo "<table class='table table-bordered table-striped'>";
-                                    echo "<thead>";
-                                        echo "<tr>";
-                                            echo "<th>Tanggal</th>";
-                                            echo "<th>Start Time</th>";
-                                            echo "<th>End Time</th>";
-                                            echo "<th>Jumlah Penggunaan</th>";
-                                        echo "</tr>";
-                                    echo "</thead>";
-                                    echo "<tbody>";
-                                        echo "<tr>";
+                                else{    
                                             while( $row = sqlsrv_fetch_array($stmt,SQLSRV_FETCH_ASSOC)){
                                             echo "<tr><td>".
-                                             $row["tanggal"]."</td><td>".
-                                             $row["start_time"]."</td><td>". 
-                                             $row["end_time"]."</td><td>".
+                                             $row["tanggal"]->format('d-m-Y')."</td><td>".
+                                             $row["start_time"]->format('H:i:s')."</td><td>". 
+                                             $row["end_time"]->format('H:i:s')."</td><td>".
                                              $row["jumlah_pengguna"]."</td></tr>";
                                           }
-                                        echo"</tr>";
-                                    echo "</tbody>";
-                                    echo "</table>";
                                 }
-                                
-                                //$rs = sqlsrv_query( $conn,$sql);
-                                //while( $row = sqlsrv_fetch_array( $rs, SQLSRV_FETCH_ASSOC) ) {
-                                //    echo "<tr><td>".$row["tanggal"]->format('d-m-Y')."</td><td>".
-                                //    $row["start_time"]->format('H:i:s')."</td><td>".
-                                //    $row["end_time"]->format('H:i:s')."</td><td>".
-                                //    $row["jumlah_pengguna"]."</td></tr>";
-                                // }
                             }
                         }
-
-                        else if(isset($_POST["jamCatat"])){
-                            if($_POST["jamCatat"]==null){
-                                echo '<script type="text/javascript">alert("pencaharian jam harus diisi");</script>';
-                            }
-                            else{
-                                $sql = 'exec daftarPenggunaPerjamJAM '. $_POST["jamCatat"].'';
-                                $stmt1 = sqlsrv_query($conn,$sql);
-                                
-                                if($stmt == false){
-                                    echo "Error exec.\n";
-                                    die(print_r(sqlsrv_errors(),true));
-                                }
-                                
-                                else{
-                                    echo "<table class='table table-bordered table-striped'>";
-                                    echo "<thead>";
-                                        echo "<tr>";
-                                            echo "<th>Tanggal</th>";
-                                            echo "<th>Start Time</th>";
-                                            echo "<th>End Time</th>";
-                                            echo "<th>Jumlah Penggunaan</th>";
-                                        echo "</tr>";
-                                    echo "</thead>";
-                                    echo "<tbody>";
-                                        echo "<tr>";
-                                            while( $row = sqlsrv_fetch_array($stmt,SQLSRV_FETCH_ASSOC)){
-                                            echo "<tr><td>".
-                                             $row["tanggal"]."</td><td>".
-                                             $row["start_time"]."</td><td>". 
-                                             $row["end_time"]."</td><td>".
-                                             $row["jumlah_pengguna"]."</td></tr>";
-                                          }
-                                        echo"</tr>";
-                                    echo "</tbody>";
-                                    echo "</table>";
-                                }
-                            }
-
+                    }else{
+                        $sql = "exec selectAll 'agr_jumlah_pengguna_per_jam'";
+                        $rs = sqlsrv_query( $conn,$sql);
+                        while( $row = sqlsrv_fetch_array( $rs, SQLSRV_FETCH_ASSOC) ) {
+                            echo "<tr><td>".$row["tanggal"]->format('d-m-Y')."</td><td>".
+                            $row["start_time"]->format('H:i:s')."</td><td>".
+                            $row["end_time"]->format('H:i:s')."</td><td>".
+                            $row["jumlah_pengguna"]."</td></tr>";
                         }
-                       
-                    
-
-
-
-                  //  else{
-                  //      $sql = "exec selectAll 'agr_jumlah_pengguna_per_jam'";
-                  //      $rs = sqlsrv_query( $conn,$sql);
-                       // while( $row = sqlsrv_fetch_array( $rs, SQLSRV_FETCH_ASSOC) ) {
-                           // echo "<tr><td>".$row["tanggal"]->format('d-m-Y')."</td><td>".
-                           // $row["start_time"]->format('H:i:s')."</td><td>".
-                           // $row["end_time"]->format('H:i:s')."</td><td>".
-                         //   $row["jumlah_pengguna"]."</td></tr>";
-                       // }
                     }
-
-                   
-                  
                 ?>
             </tbody>
         </table>
